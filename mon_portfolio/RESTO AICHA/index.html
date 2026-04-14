@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+    <title>Resto Aicha - Pâtisserie d'exception</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <header id="main-header">
+    <a href="#banniere" class="logo"><span>R</span>esto Aicha</a>
+    <ul class="navbar">
+        <li><a href="#banniere">Accueil</a></li>
+        <li><a href="#apropos">A propos</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#expert">Expert</a></li>
+        <li><a href="#temoignage">Temoignage</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#reservation-section" class="btn-reserve" id="reserveNavBtn">Reservation</a></li>
+    </ul>
+ </header>   
+
+ <!-- Section Accueil -->
+ <section class="banniere" id="banniere">
+    <div class="contenu">
+        <h2>Que des plats delicieux</h2>
+        <p>La meilleure pâtissière du monde a un secret pour réaliser un carrot cake inoubliable : une pointe de cet ingrédient !</p>
+        <a href="#menu" class="btn1">Notre Menu</a>
+        <a href="#reservation-section" class="btn2">Reservation</a>
+    </div>
+ </section>
+
+ <!-- À propos -->
+ <section class="apropos" id="apropos">
+    <div class="container">
+        <div class="texte">
+        <h2 class="titre-texte"><span>A</span> Propos De Nous</h2>
+        <p>Moelleux, parfumé et délicieusement réconfortant, le carrot cake <br>
+             fait partie de ces pâtisseries qui traversent <br>
+             les époques sans jamais perdre de leur superbe. <br>
+             Si son succès ne se dément pas, encore faut-il connaître <br>
+              les bonnes astuces pour obtenir la texture parfaite et l'équilibre idéal entre épices <br>
+             , fruits secs et douceur du glaçage.</p> 
+    </div>
+    <img src="C:\Users\AICHA\Desktop\mon_portfolio\Images\images (23).jpg" alt="Pâtisserie artisanale">
+    </div>
+ </section> 
+
+ <!-- Section MENU avec fonctionnalité Voir Plus dynamique -->
+ <section class="menu" id="menu">
+    <div class="titre">
+        <h2 class="titre-texte"><span>M</span>enu</h2>
+        <p>Découvrez nos créations gourmandes, faites avec passion et des ingrédients d'exception.</p>
+    </div>
+    <div class="contenu">
+        <div class="menu-grid" id="menuGrid">
+            <!-- Les premiers plats (affichés par défaut) -->
+            <div class="box plat-item">
+                <div class="imbox">
+                    <img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Carrot Cake">
+                </div>
+                <div class="text">
+                    <h3>Carrot Cake Signature</h3>
+                    <p>Moelleux à la carotte, noix et glaçage au cream cheese</p>
+                    <div class="prix">12€</div>
+                </div>
+            </div>
+            <div class="box plat-item">
+                <div class="imbox">
+                    <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Tarte aux fruits">
+                </div>
+                <div class="text">
+                    <h3>Tarte aux Agrumes</h3>
+                    <p>Citron vert, orange sanguine, meringue italienne</p>
+                    <div class="prix">10€</div>
+                </div>
+            </div>
+            <div class="box plat-item">
+                <div class="imbox">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Fondant Chocolat">
+                </div>
+                <div class="text">
+                    <h3>Fondant Chocolat</h3>
+                    <p>Coeur coulant au chocolat noir 70%</p>
+                    <div class="prix">11€</div>
+                </div>
+            </div>
+            <div class="box plat-item">
+                <div class="imbox">
+                    <img src="C:\Users\AICHA\Desktop\mon_portfolio\Images\images (26).jpg" alt="Macarons">
+                </div>
+                <div class="text">
+                    <h3>Assortiment Macarons</h3>
+                    <p>6 parfums: pistache, framboise, chocolat, vanille</p>
+                    <div class="prix">15€</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="voir-plus-wrapper" id="voirPlusWrapper">
+        <button class="btn-voir-plus" id="voirPlusBtn">🍽️ Voir plus de plats</button>
+    </div>
+    <div id="finMenuMessage" style="text-align: center; margin-top: 20px;"></div>
+ </section> 
+
+ <!-- Section Expert -->
+ <section class="expert" id="expert">
+  <div class="titre">
+      <h2 class="titre-texte">Nos <span>E</span>xperts</h2>
+      <p>Des artisans passionnés qui subliment la pâtisserie sénégalaise et française.</p>
+  </div>
+  <div class="contenu">
+      <div class="box">
+        <div class="imbox">
+             <img src="C:\Users\AICHA\Desktop\mon_portfolio\Images\téléchargement (1).jpg" alt="Chef Aicha">
+        </div>
+        <div class="text">
+           <h3>Aicha Ndiaye</h3>
+           <p>Chef Pâtissière</p>
+        </div>
+      </div>
+      <div class="box">
+        <div class="imbox">
+             <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Chef Coumba">
+        </div>
+        <div class="text">
+           <h3>Coumba Ndiaye</h3>
+           <p>Spécialiste Chocolat</p>
+        </div>
+  </div>
+  <div class="box">
+    <div class="imbox">
+         <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Cheikh Alfred">
+    </div>
+    <div class="text">
+       <h3>Cheikh Alfred</h3>
+       <p>Maître Boulanger</p>
+    </div>
+</div>
+<div class="box">
+  <div class="imbox">
+       <img src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Maman Dib">
+  </div>
+  <div class="text">
+     <h3>Maman Dib</h3>
+     <p>Créatrice de saveurs</p>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- Témoignages -->
+<section class="temoignage" id="temoignage">
+  <div class="titre">
+      <h2 class="titre-texte">Que Disent Nos <span>C</span>lients</h2>
+      <p>Des retours authentiques qui font notre fierté.</p>
+  </div>
+  <div class="contenu">
+      <div class="box">
+        <div class="imbox">
+             <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Client Lamine">
+        </div>
+        <div class="text">
+          <p>⭐️⭐️⭐️⭐️⭐️ "Le meilleur carrot cake de Dakar ! Une texture parfaite et un accueil chaleureux."</p>
+           <h3>Lamine Ndiaye</h3>
+        </div>
+      </div>
+      <div class="box">
+        <div class="imbox">
+             <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Cliente Cecile">
+        </div>
+        <div class="text">
+          <p>⭐️⭐️⭐️⭐️⭐️ "Des pâtisseries dignes des plus grandes tables, je reviens chaque semaine !"</p>
+           <h3>Cecile Ba</h3>
+        </div>
+  </div>
+  <div class="box">
+    <div class="imbox">
+         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Client Rosaline">
+    </div>
+    <div class="text">
+      <p>⭐️⭐️⭐️⭐️ "Ambiance cosy, desserts raffinés. Mention spéciale pour la tarte aux agrumes."</p>
+       <h3>Rosaline</h3>
+    </div>
+</div>
+<div class="box">
+  <div class="imbox">
+       <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Client Maman">
+  </div>
+  <div class="text">
+    <p>⭐️⭐️⭐️⭐️⭐️ "Une équipe passionnée, des gâteaux exceptionnels. Je recommande à 100%."</p>
+     <h3>Maman Dib</h3>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Section Contact -->
+<section class="contact" id="contact">
+  <div class="titre">
+    <h2 class="titre-texte"><span>C</span>ontact</h2>
+    <p>Une question ? Une envie sucrée ? Écrivez-nous !</p>
+  </div><br>
+  <div class="contactform">
+    <h3>Envoyez-nous un message</h3>
+    <div class="inputboite">
+     <input type="text" placeholder="Nom" id="contactName">
+    </div><br>
+    <div class="inputboite" >
+      <input type="email" placeholder="email" id="contactEmail">
+    </div><br>
+    <div class="inputboite" >
+      <textarea placeholder="message" id="contactMsg" rows="3"></textarea>
+    </div>
+    <br>
+    <div class="inputboite">
+      <input type="submit" value="Envoyer" id="sendMessageBtn">
+    </div>
+    <p id="formFeedback" style="margin-top: 12px; font-size: 14px; color: #e67e22;"></p>
+  </div>
+</section>
+
+<!-- Section Réservation dédiée -->
+<section id="reservation-section" style="padding: 60px 8%; background: #fff0e6;">
+    <div class="titre">
+        <h2 class="titre-texte"><span>R</span>éservation</h2>
+        <p>Réservez votre table pour une expérience gourmande inoubliable.</p>
+    </div>
+    <div class="contactform" style="max-width: 550px;">
+        <h3>Formulaire de réservation</h3>
+        <div class="inputboite">
+            <input type="text" placeholder="Nom complet" id="reserveName">
+        </div><br>
+        <div class="inputboite">
+            <input type="email" placeholder="Adresse email" id="reserveEmail">
+        </div><br>
+        <div class="inputboite">
+            <input type="tel" placeholder="Téléphone" id="reservePhone">
+        </div><br>
+        <div class="inputboite">
+            <input type="date" id="reserveDate">
+        </div><br>
+        <div class="inputboite">
+            <input type="time" id="reserveTime">
+        </div><br>
+        <div class="inputboite">
+            <select id="reserveGuests" style="width:100%; padding:12px; border-radius:40px; border:1px solid #ddd;">
+                <option>1 personne</option>
+                <option>2 personnes</option>
+                <option>3 personnes</option>
+                <option>4 personnes</option>
+                <option>5+ personnes</option>
+            </select>
+        </div><br>
+        <div class="inputboite">
+            <input type="submit" value="Confirmer ma réservation" id="submitReservationBtn">
+        </div>
+        <p id="reserveFeedback" style="margin-top: 12px; font-size: 14px; color:#2c3e2f;"></p>
+    </div>
+</section>
+
+<div class="copyright">
+  <p>copyright 2024 <a href="#">Aicha Ndiaye</a> étudiante licence. tout droits réservé — Pâtisserie d'exception</p>
+</div>
+
+<script type="text/javascript">
+  // ---------- GESTION HEADER STICKY ----------
+  window.addEventListener('scroll', function(){
+    const header = document.querySelector('header');
+    if (window.scrollY > 0) {
+        header.classList.add("sticky");
+    } else {
+        header.classList.remove("sticky");
+    }
+  });
+
+  // Navigation fluide avec offset header
+  document.querySelectorAll('.navbar a, .btn1, .btn2, .logo').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                const offset = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
+                    top: elementPosition - offset,
+                    behavior: 'smooth'
+                });
+                history.pushState(null, null, targetId);
+            }
+        }
+    });
+  });
+
+  const reserveNavBtn = document.getElementById('reserveNavBtn');
+  if(reserveNavBtn) {
+      reserveNavBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const reservationSection = document.getElementById('reservation-section');
+          if(reservationSection) {
+              const offset = 70;
+              const pos = reservationSection.getBoundingClientRect().top + window.pageYOffset;
+              window.scrollTo({ top: pos - offset, behavior: 'smooth' });
+              history.pushState(null, null, '#reservation-section');
+          }
+      });
+  }
+
+  // ---------- FONCTIONNALITÉ VOIR PLUS : AFFICHER DE NOUVEAUX PLATS DIFFÉRENTS ----------
+  // Liste complète des plats (10 plats supplémentaires au total)
+  const tousLesPlats = [
+    { nom: "Éclair au Café", desc: "Crème mousseline café, glaçage croustillant", prix: "9€", img: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" },
+    { nom: "Paris-Brest", desc: "Praliné noisette, crème légère", prix: "11€", img: "https://images.unsplash.com/photo-1623334044303-241021148842?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" },
+    { nom: "Mille-Feuille", desc: "Vanille de Madagascar, caramel beurre salé", prix: "10€", img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" },
+    { nom: "Fraisier", desc: "Fraises fraîches, crème mousseline", prix: "12€", img: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" },
+    { nom: "Opéra", desc: "Café, chocolat, biscuit Joconde", prix: "11€", img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" },
+    { nom: "Tarte Tatin", desc: "Pommes caramélisées, pâte feuilletée", prix: "10€", img: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" },
+    { nom: "Cheesecake New York", desc: "Spéculoos, coulis fruits rouges", prix: "11€", img: "https://images.unsplash.com/photo-1541698444083-023c97d3f4b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" },
+    { nom: "Choux à la Crème", desc: "Crème pâtissière vanille, éclats de praliné", prix: "8€", img: "https://images.unsplash.com/photo-1626094309830-abbb0c99da4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" },
+    { nom: "Pavlova", desc: "Meringue, fruits exotiques, chantilly", prix: "12€", img: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" },
+    { nom: "Baba au Rhum", desc: "Savarin imbibé, crème chantilly", prix: "9€", img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" }
+  ];
+
+  let platsAffiches = 4; // 4 plats déjà visibles au départ
+  const menuGrid = document.getElementById('menuGrid');
+  const voirPlusBtn = document.getElementById('voirPlusBtn');
+  const finMenuMessageDiv = document.getElementById('finMenuMessage');
+
+  // Fonction pour créer un élément box de plat
+  function creerBoxPlat(plat, index) {
+    const box = document.createElement('div');
+    box.className = 'box plat-item';
+    box.style.animation = `fadeInUp 0.4s ease ${index * 0.05}s both`;
+    box.innerHTML = `
+        <div class="imbox">
+            <img src="${plat.img}" alt="${plat.nom}">
+        </div>
+        <div class="text">
+            <h3>${plat.nom}</h3>
+            <p>${plat.desc}</p>
+            <div class="prix">${plat.prix}</div>
+        </div>
+    `;
+    return box;
+  }
+
+  // Ajouter les plats suivants (3 par 3 ou tout ce qui reste)
+  function ajouterPlatsSuivants() {
+    const restePlats = tousLesPlats.length - (platsAffiches - 4); // les plats déjà affichés depuis tousLesPlats
+    if (restePlats <= 0) {
+        // Plus de plats à afficher
+        voirPlusBtn.style.display = 'none';
+        finMenuMessageDiv.innerHTML = '<div class="fin-menu">🍰 Tous nos délicieux plats sont affichés ! Revenez bientôt pour découvrir nos nouveautés. 🍰</div>';
+        return;
+    }
+    
+    // Afficher 3 nouveaux plats à chaque clic (ou moins si c'est la fin)
+    const aAjouter = Math.min(3, restePlats);
+    for (let i = 0; i < aAjouter; i++) {
+        const platIndex = (platsAffiches - 4); // index dans tousLesPlats
+        if (platIndex < tousLesPlats.length) {
+            const nouveauPlat = tousLesPlats[platIndex];
+            const nouvelleBox = creerBoxPlat(nouveauPlat, i);
+            menuGrid.appendChild(nouvelleBox);
+            platsAffiches++;
+        }
+    }
+    
+    // Si après ajout il n'y a plus de plats restants, désactiver le bouton
+    if (platsAffiches - 4 >= tousLesPlats.length) {
+        voirPlusBtn.style.display = 'none';
+        finMenuMessageDiv.innerHTML = '<div class="fin-menu">✨ Merci d\'avoir découvert notre carte complète ! À très bientôt chez Resto Aicha ✨</div>';
+    }
+  }
+
+  // Événement du bouton Voir Plus
+  if(voirPlusBtn) {
+      voirPlusBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          ajouterPlatsSuivants();
+          // Scroll léger vers le bas pour montrer les nouveaux plats
+          setTimeout(() => {
+              const dernierPlat = document.querySelectorAll('.plat-item:last-child');
+              if(dernierPlat.length) {
+                  dernierPlat[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+          }, 100);
+      });
+  }
+
+  // Formulaire contact
+  const sendBtn = document.getElementById('sendMessageBtn');
+  const feedback = document.getElementById('formFeedback');
+  if(sendBtn) {
+      sendBtn.addEventListener('click', function() {
+          const name = document.getElementById('contactName').value.trim();
+          const email = document.getElementById('contactEmail').value.trim();
+          const msg = document.getElementById('contactMsg').value.trim();
+          if(!name || !email || !msg) {
+              feedback.textContent = 'Veuillez remplir tous les champs (Nom, email, message).';
+              feedback.style.color = '#e67e22';
+          } else if(!email.includes('@')) {
+              feedback.textContent = 'Adresse email invalide.';
+          } else {
+              feedback.textContent = `Merci ${name}, votre message a été envoyé avec succès ! Nous vous répondrons sous 24h.`;
+              feedback.style.color = '#2c6e2f';
+              document.getElementById('contactName').value = '';
+              document.getElementById('contactEmail').value = '';
+              document.getElementById('contactMsg').value = '';
+              setTimeout(() => { feedback.textContent = ''; }, 4000);
+          }
+      });
+  }
+
+  // Formulaire réservation
+  const reserveBtn = document.getElementById('submitReservationBtn');
+  const reserveFeedbackSpan = document.getElementById('reserveFeedback');
+  if(reserveBtn) {
+      reserveBtn.addEventListener('click', function() {
+          const name = document.getElementById('reserveName').value.trim();
+          const email = document.getElementById('reserveEmail').value.trim();
+          const phone = document.getElementById('reservePhone').value.trim();
+          const date = document.getElementById('reserveDate').value;
+          const time = document.getElementById('reserveTime').value;
+          const guests = document.getElementById('reserveGuests').value;
+          
+          if(!name || !email || !phone || !date || !time) {
+              reserveFeedbackSpan.textContent = 'Veuillez remplir tous les champs obligatoires (Nom, email, téléphone, date, heure).';
+              reserveFeedbackSpan.style.color = '#c0392b';
+              return;
+          }
+          if(!email.includes('@')) {
+              reserveFeedbackSpan.textContent = 'Email invalide.';
+              return;
+          }
+          reserveFeedbackSpan.innerHTML = `✅ Merci ${name} ! Votre réservation pour ${guests} le ${date} à ${time} est confirmée. Nous vous attendons avec plaisir.`;
+          reserveFeedbackSpan.style.color = '#2c6e2f';
+          document.getElementById('reserveName').value = '';
+          document.getElementById('reserveEmail').value = '';
+          document.getElementById('reservePhone').value = '';
+          document.getElementById('reserveDate').value = '';
+          document.getElementById('reserveTime').value = '';
+          setTimeout(() => { 
+              if(reserveFeedbackSpan) reserveFeedbackSpan.innerHTML = ''; 
+          }, 5000);
+      });
+  }
+</script>
+</body>
+</html>
