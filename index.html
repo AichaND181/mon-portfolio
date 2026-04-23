@@ -1,1 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Aicha Ndiaye | Portfolio — Développeuse Full-Stack</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<button class="theme-btn" id="theme-toggle"><i class="fas fa-moon"></i></button>
+<button class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Curseur unique cercle -->
+<div class="custom-cursor"></div>
+
+<header>
+    <div class="header-badge"><i class="fas fa-code-branch"></i> FULL-STACK CRAFTSMANSHIP</div>
+    <h1>Aicha Ndiaye</h1>
+    <p id="dynamic-text" style="font-size: 1.3rem;"></p>
+</header>
+
+<nav class="glass-nav">
+    <a href="#about">À propos</a>
+    <a href="#competences">Compétences</a>
+    <a href="#projets">Projets</a>
+    <a href="#parcours">Parcours</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+    <h2>À propos de moi</h2>
+    <p style="max-width: 780px; margin: 0 auto 40px; text-align: center; font-size: 1.1rem;">Développeuse web créative et technique, je transforme les idées en expériences digitales percutantes. Spécialisée dans l'univers full-stack, j'allie design raffiné, performances et code robuste. Actuellement en quête de défis innovants pour repousser les limites du web.</p>
+    <div class="stats">
+        <div class="stat"><div class="counter" data-target="6">0</div><p>Projets réalisés</p></div>
+        <div class="stat"><div class="counter" data-target="16">0</div><p>Mois d'expérience</p></div>
+        <div class="stat"><div class="counter" data-target="8">0</div><p>Technologies maîtrisées</p></div>
+    </div>
+</section>
+
+<section id="competences">
+    <h2>Compétences techniques</h2>
+    <div class="skills-container">
+        <div class="skill"><span>HTML5 / CSS3 <i class="fab fa-html5"></i> 90%</span><div class="skill-bar"><div class="skill-level" data-width="90"></div></div></div>
+        <div class="skill"><span>JavaScript (ES6+) <i class="fab fa-js"></i> 68%</span><div class="skill-bar"><div class="skill-level" data-width="68"></div></div></div>
+        <div class="skill"><span>PHP / MySQL <i class="fab fa-php"></i> 72%</span><div class="skill-bar"><div class="skill-level" data-width="72"></div></div></div>
+        <div class="skill"><span>React.js <i class="fab fa-react"></i> 60%</span><div class="skill-bar"><div class="skill-level" data-width="60"></div></div></div>
+    </div>
+</section>
+
+<section id="projets">
+    <h2>Projets récents</h2>
+    <div class="projets-container">
+        <!-- Projet 1 : avec votre image locale -->
+        <div class="projet">
+            <a href="RESTO AICHA/index.html" target="_blank" class="projet-image-link">
+                <div class="projet-image">
+                    <img src="C:\Users\AICHA\Desktop\mon_portfolio\Images\photo.jpg" alt="Site Restaurant Aicha">
+                    <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
+                </div>
+            </a>
+            <div class="projet-content">
+                <h3>Site Restaurant Aicha</h3>
+                <p>Vitrine gastronomique immersive, design élégant et responsive.</p>
+                <div class="tech-stack"><span>HTML5</span><span>CSS3</span><span>JS</span></div>
+                <a href="RESTO AICHA/index.html" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
+            </div>
+        </div>
+        <!-- Projet 2 -->
+        <div class="projet">
+            <a href="site web aicha/index.html" target="_blank" class="projet-image-link">
+                <div class="projet-image">
+                    <img src="C:\Users\AICHA\Desktop\mon_portfolio\Images\site.jpg" alt="Site web Aicha">
+                    <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
+                </div>
+            </a>
+            <div class="projet-content">
+                <h3>Site web Aicha</h3>
+                <p>Portfolio personnel avec animations fluides et micro-interactions.</p>
+                <div class="tech-stack"><span>HTML5</span><span>CSS3</span><span>JS</span></div>
+                <a href="site web aicha/index.html" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
+            </div>
+        </div>
+        <!-- Projet 3 -->
+        <div class="projet">
+            <a href="http://localhost/gest_medicale_coud/login.php" target="_blank" class="projet-image-link">
+                <div class="projet-image">
+                    <img src="C:\Users\AICHA\Desktop\mon_portfolio\Images\medecin.jpg" alt="Système de gestion médicale">
+                    <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
+                </div>
+            </a>
+            <div class="projet-content">
+                <h3>Gestion Médicale</h3>
+                <p>Application sécurisée avec authentification & gestion de dossiers.</p>
+                <div class="tech-stack"><span>PHP</span><span>MySQL</span><span>CSS</span></div>
+                <a href="http://localhost/gest_medicale_coud/login.php" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
+            </div>
+        </div>
+        <!-- Projet 4 -->
+        <div class="projet">
+            <a href="http://localhost/aidesociale/reclamation/" target="_blank" class="projet-image-link">
+                <div class="projet-image">
+                    <img src="C:\Users\AICHA\Desktop\mon_portfolio\Images\sociale.jpg" alt="Aide Sociale COUD">
+                    <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
+                </div>
+            </a>
+            <div class="projet-content">
+                <h3>Aide Sociale COUD</h3>
+                <p>Plateforme de gestion d'aides financières et suivi des étudiants.</p>
+                <div class="tech-stack"><span>PHP</span><span>SQL</span><span>Bootstrap</span></div>
+                <a href="http://localhost/aidesociale/reclamation/" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="parcours">
+    <h2>Parcours & formation</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-date">2024 - Présent</div>
+            <div class="timeline-content">
+                <h3>🎓 Full-Stack intensive program</h3>
+                <p>Maîtrise des écosystèmes modernes : architecture MVC, bases de données relationnelles, design patterns et déploiement.</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2023 - 2024</div>
+            <div class="timeline-content">
+                <h3>💻 Projets digitaux & freelancing</h3>
+                <p>Création de sites vitrines, applications dynamiques et collaboration avec des startups locales.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact professionnel</h2>
+    <div class="contact-section-pro">
+        <div class="contact-grid">
+            <div>
+                <div class="contact-card-pro"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><h3>Email</h3><p>aicha.ndiaye329@gmail.com</p></div></div>
+                <div class="contact-card-pro"><div class="contact-icon"><i class="fas fa-phone-alt"></i></div><div><h3>Téléphone</h3><p>+221 78 181 62 41</p></div></div>
+                <div class="contact-card-pro"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div><h3>Localisation</h3><p>Dakar, Sénégal</p></div></div>
+                <div class="social-links-pro">
+                    <a href="#" class="social-link-pro"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link-pro"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <form id="contactFormPro">
+                <div class="input-group-pro"><i class="fas fa-user"></i><input type="text" id="namePro" placeholder="Nom complet" required></div>
+                <div class="input-group-pro"><i class="fas fa-envelope"></i><input type="email" id="emailPro" placeholder="Adresse email" required></div>
+                <div class="input-group-pro"><i class="fas fa-comment"></i><textarea rows="4" id="msgPro" placeholder="Votre message professionnel..." required></textarea></div>
+                <button type="submit" class="submit-btn-pro">Envoyer le message <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Aicha Ndiaye — Développeuse full-stack & créative</p>
+    <p style="margin-top: 12px; font-size: 0.8rem;"><i class="fas fa-crown"></i> Code, élégance & innovation</p>
+</footer>
+
+<script>
+    // ========== CURSEUR UNIQUE CERCLE ==========
+    (function() {
+        if(window.matchMedia("(hover: none) and (pointer: coarse)").matches) return;
+        const cursor = document.querySelector('.custom-cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        function smoothFollow() {
+            cursorX += (mouseX - cursorX) * 0.2;
+            cursorY += (mouseY - cursorY) * 0.2;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(smoothFollow);
+        }
+        smoothFollow();
+        
+        // Effet hover sur tous les éléments interactifs
+        const hoverElements = document.querySelectorAll('a, button, .visit-btn, .social-link-pro, .projet-image-link, nav a, .theme-btn, .back-to-top, .projet, .submit-btn-pro');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+        
+        // Sur les champs de formulaire, on désactive l'effet d'agrandissement pour garder la lisibilité
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(inp => {
+            inp.addEventListener('mouseenter', () => cursor.style.opacity = '0.4');
+            inp.addEventListener('mouseleave', () => cursor.style.opacity = '1');
+        });
+    })();
+
+    // Texte dynamique
+    const texts = ["Développeuse Full-Stack", "Architecte web créative", "Experte en expériences digitales", "Code & Innovation"];
+    let idx = 0, ch = 0, curTxt = "";
+    const dynEl = document.getElementById("dynamic-text");
+    function typePro() {
+        if(ch < texts[idx].length) { 
+            curTxt += texts[idx].charAt(ch); 
+            dynEl.innerHTML = curTxt; 
+            ch++; 
+            setTimeout(typePro, 70); 
+        } else { 
+            setTimeout(() => { 
+                curTxt = ""; 
+                ch = 0; 
+                idx = (idx+1)%texts.length; 
+                typePro(); 
+            }, 2200); 
+        }
+    } 
+    typePro();
+
+    // Animation compétences & compteurs
+    const skillBars = document.querySelectorAll('.skill-level');
+    const counters = document.querySelectorAll('.counter');
+    let skillsAnimated = false;
+    function animateProSkills() {
+        skillBars.forEach(bar => { let w = bar.getAttribute('data-width'); bar.style.width = w+'%'; });
+        counters.forEach(c => { 
+            let target = parseInt(c.getAttribute('data-target'));
+            let curr = 0;
+            let step = target / 45;
+            let upd = () => {
+                if(curr < target) { curr += step; c.innerText = Math.ceil(curr); requestAnimationFrame(upd); }
+                else c.innerText = target;
+            };
+            upd();
+        });
+    }
+    const obsSkills = new IntersectionObserver((entries) => { if(entries[0].isIntersecting && !skillsAnimated) { animateProSkills(); skillsAnimated = true; } }, { threshold: 0.3 });
+    obsSkills.observe(document.getElementById('competences'));
+
+    // Dark/Light mode
+    const themeBtn = document.getElementById('theme-toggle');
+    themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        const icon = themeBtn.querySelector('i');
+        if(document.body.classList.contains('light-mode')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+        else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    });
+
+    // Back to top
+    const backBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => { if(window.scrollY > 400) backBtn.classList.add('show'); else backBtn.classList.remove('show'); });
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Formulaire
+    document.getElementById('contactFormPro').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert("✓ Message envoyé avec succès ! Je vous recontacte rapidement.");
+        e.target.reset();
+    });
+    
+    // Animation fade au scroll
+    const fadeElements = document.querySelectorAll('section, .projet, .timeline-item');
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if(entry.isIntersecting) entry.target.style.opacity = '1'; else entry.target.style.opacity = '0'; });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(el => { el.style.transition = 'opacity 0.6s ease'; el.style.opacity = '0'; fadeObserver.observe(el); });
+</script>
+</body>
+</html>
