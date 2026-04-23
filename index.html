@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Aicha Ndiaye | Portfolio — Développeuse Full-Stack</title>
-    <!-- Google Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -14,14 +13,7 @@
 <button class="theme-btn" id="theme-toggle"><i class="fas fa-moon"></i></button>
 <button class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></button>
 
-<!-- Curseur unique cercle -->
 <div class="custom-cursor"></div>
-
-<header>
-    <div class="header-badge"><i class="fas fa-code-branch"></i> FULL-STACK CRAFTSMANSHIP</div>
-    <h1>Aicha Ndiaye</h1>
-    <p id="dynamic-text" style="font-size: 1.3rem;"></p>
-</header>
 
 <nav class="glass-nav">
     <a href="#about">À propos</a>
@@ -31,9 +23,14 @@
     <a href="#contact">Contact</a>
 </nav>
 
+<header>
+    <h1>Aicha Ndiaye</h1>
+    <p id="dynamic-text"></p>
+</header>
+
 <section id="about">
     <h2>À propos de moi</h2>
-    <p style="max-width: 780px; margin: 0 auto 40px; text-align: center; font-size: 1.1rem;">Développeuse web créative et technique, je transforme les idées en expériences digitales percutantes. Spécialisée dans l'univers full-stack, j'allie design raffiné, performances et code robuste. Actuellement en quête de défis innovants pour repousser les limites du web.</p>
+    <p style="max-width: 780px; margin: 0 auto 30px; text-align: center; font-size: 1rem;">Développeuse web créative et technique, je transforme les idées en expériences digitales percutantes. Spécialisée dans l'univers full-stack, j'allie design raffiné, performances et code robuste. Actuellement en quête de défis innovants pour repousser les limites du web.</p>
     <div class="stats">
         <div class="stat"><div class="counter" data-target="6">0</div><p>Projets réalisés</p></div>
         <div class="stat"><div class="counter" data-target="16">0</div><p>Mois d'expérience</p></div>
@@ -54,11 +51,10 @@
 <section id="projets">
     <h2>Projets récents</h2>
     <div class="projets-container">
-        <!-- Projet 1 : avec votre image locale -->
         <div class="projet">
             <a href="RESTO AICHA/index.html" target="_blank" class="projet-image-link">
                 <div class="projet-image">
-                    <img src="Images/photo.jpg" alt="Site Restaurant Aicha">
+                    <img src="Images\photo.jpg" alt="Site Restaurant Aicha">
                     <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
                 </div>
             </a>
@@ -69,11 +65,10 @@
                 <a href="RESTO AICHA/index.html" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
             </div>
         </div>
-        <!-- Projet 2 -->
         <div class="projet">
             <a href="site web aicha/index.html" target="_blank" class="projet-image-link">
                 <div class="projet-image">
-                    <img src="Images/site.jpg" alt="Site web Aicha">
+                    <img src="Images\site.jpg" alt="Site web Aicha">
                     <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
                 </div>
             </a>
@@ -84,11 +79,10 @@
                 <a href="site web aicha/index.html" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
             </div>
         </div>
-        <!-- Projet 3 -->
         <div class="projet">
             <a href="http://localhost/gest_medicale_coud/login.php" target="_blank" class="projet-image-link">
                 <div class="projet-image">
-                    <img src="Images/medecin.jpg" alt="Système de gestion médicale">
+                    <img src="Images\medecin.jpg" alt="Système de gestion médicale">
                     <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
                 </div>
             </a>
@@ -99,11 +93,10 @@
                 <a href="http://localhost/gest_medicale_coud/login.php" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
             </div>
         </div>
-        <!-- Projet 4 -->
         <div class="projet">
             <a href="http://localhost/aidesociale/reclamation/" target="_blank" class="projet-image-link">
                 <div class="projet-image">
-                    <img src="Images/sociale.jpg" alt="Aide Sociale COUD">
+                    <img src="Images\sociale.jpg" alt="Aide Sociale COUD">
                     <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
                 </div>
             </a>
@@ -142,12 +135,21 @@
     <div class="contact-section-pro">
         <div class="contact-grid">
             <div>
-                <div class="contact-card-pro"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><h3>Email</h3><p>aicha.ndiaye329@gmail.com</p></div></div>
-                <div class="contact-card-pro"><div class="contact-icon"><i class="fas fa-phone-alt"></i></div><div><h3>Téléphone</h3><p>+221 78 181 62 41</p></div></div>
-                <div class="contact-card-pro"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div><h3>Localisation</h3><p>Dakar, Sénégal</p></div></div>
+                <div class="contact-card-pro">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div><h3>Email</h3><p>aicha.ndiaye329@gmail.com</p></div>
+                </div>
+                <div class="contact-card-pro">
+                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div><h3>Téléphone</h3><p>+221 78 181 62 41</p></div>
+                </div>
+                <div class="contact-card-pro">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div><h3>Localisation</h3><p>Dakar, Sénégal</p></div>
+                </div>
                 <div class="social-links-pro">
-                    <a href="#" class="social-link-pro"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link-pro"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/AichaND181" class="social-link-pro" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/a%C3%AFcha-ndiaye-0327a6303/" class="social-link-pro" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <form id="contactFormPro">
@@ -162,22 +164,17 @@
 
 <footer>
     <p>© 2026 Aicha Ndiaye — Développeuse full-stack & créative</p>
-    <p style="margin-top: 12px; font-size: 0.8rem;"><i class="fas fa-crown"></i> Code, élégance & innovation</p>
+    <p style="margin-top: 8px; font-size: 0.75rem;"><i class="fas fa-crown"></i> Code, élégance & innovation</p>
 </footer>
 
 <script>
-    // ========== CURSEUR UNIQUE CERCLE ==========
+    // Curseur personnalisé
     (function() {
         if(window.matchMedia("(hover: none) and (pointer: coarse)").matches) return;
         const cursor = document.querySelector('.custom-cursor');
         let mouseX = 0, mouseY = 0;
         let cursorX = 0, cursorY = 0;
-        
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-        
+        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
         function smoothFollow() {
             cursorX += (mouseX - cursorX) * 0.2;
             cursorY += (mouseY - cursorY) * 0.2;
@@ -186,15 +183,11 @@
             requestAnimationFrame(smoothFollow);
         }
         smoothFollow();
-        
-        // Effet hover sur tous les éléments interactifs
-        const hoverElements = document.querySelectorAll('a, button, .visit-btn, .social-link-pro, .projet-image-link, nav a, .theme-btn, .back-to-top, .projet, .submit-btn-pro');
+        const hoverElements = document.querySelectorAll('a, button, .visit-btn, .social-link-pro, .projet-image-link, .glass-nav a, .theme-btn, .back-to-top, .projet, .submit-btn-pro');
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
-        
-        // Sur les champs de formulaire, on désactive l'effet d'agrandissement pour garder la lisibilité
         const inputs = document.querySelectorAll('input, textarea');
         inputs.forEach(inp => {
             inp.addEventListener('mouseenter', () => cursor.style.opacity = '0.4');
@@ -243,7 +236,7 @@
     const obsSkills = new IntersectionObserver((entries) => { if(entries[0].isIntersecting && !skillsAnimated) { animateProSkills(); skillsAnimated = true; } }, { threshold: 0.3 });
     obsSkills.observe(document.getElementById('competences'));
 
-    // Dark/Light mode
+    // Dark mode
     const themeBtn = document.getElementById('theme-toggle');
     themeBtn.addEventListener('click', () => {
         document.body.classList.toggle('light-mode');
@@ -264,7 +257,7 @@
         e.target.reset();
     });
     
-    // Animation fade au scroll
+    // Animation fade
     const fadeElements = document.querySelectorAll('section, .projet, .timeline-item');
     const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if(entry.isIntersecting) entry.target.style.opacity = '1'; else entry.target.style.opacity = '0'; });
