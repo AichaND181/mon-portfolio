@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Aicha Ndiaye | Portfolio — Développeuse Full-Stack</title>
+    <meta name="description" content="Portfolio d'Aicha Ndiaye – Développeuse Full-Stack créative. Découvrez mes projets, compétences et contactez-moi.">
+    <meta property="og:title" content="Aicha Ndiaye | Développeuse Full-Stack">
+    <meta property="og:description" content="Portfolio créatif et technique.">
+    <meta property="og:image" content="Images/apercu.jpg">
+    <meta property="og:url" content="https://ton-site-github.io">
+    <meta name="twitter:card" content="summary_large_image">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- EmailJS SDK (optionnel, commenté par défaut) -->
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script> -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div id="progress-bar"></div>
 <button class="theme-btn" id="theme-toggle"><i class="fas fa-moon"></i></button>
 <button class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></button>
-
 <div class="custom-cursor"></div>
 
 <nav class="glass-nav">
@@ -36,6 +44,9 @@
         <div class="stat"><div class="counter" data-target="16">0</div><p>Mois d'expérience</p></div>
         <div class="stat"><div class="counter" data-target="8">0</div><p>Technologies maîtrisées</p></div>
     </div>
+    <div class="cv-btn-container">
+        <a href="aicha_cv.pdf" class="cv-btn" download="CV_Aicha_Ndiaye.pdf"><i class="fas fa-file-pdf"></i> Télécharger mon CV</a>
+    </div>
 </section>
 
 <section id="competences">
@@ -48,13 +59,19 @@
     </div>
 </section>
 
+
 <section id="projets">
     <h2>Projets récents</h2>
-    <div class="projets-container">
-        <div class="projet">
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Tous</button>
+        <button class="filter-btn" data-filter="html-css">HTML/CSS/JS</button>
+        <button class="filter-btn" data-filter="php">PHP/MySQL</button>
+    </div>
+    <div class="projets-container" id="projetsContainer">
+        <div class="projet" data-category="html-css">
             <a href="RESTO AICHA/index.html" target="_blank" class="projet-image-link">
                 <div class="projet-image">
-                    <img src="Images\photo.jpg" alt="Site Restaurant Aicha">
+                    <img src="Images/photo.jpg" alt="Site Restaurant Aicha" loading="lazy" decoding="async">
                     <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
                 </div>
             </a>
@@ -65,10 +82,10 @@
                 <a href="RESTO AICHA/index.html" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
             </div>
         </div>
-        <div class="projet">
+        <div class="projet" data-category="html-css">
             <a href="site web aicha/index.html" target="_blank" class="projet-image-link">
                 <div class="projet-image">
-                    <img src="Images\site.jpg" alt="Site web Aicha">
+                    <img src="Images/site.jpg" alt="Site web Aicha" loading="lazy" decoding="async">
                     <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
                 </div>
             </a>
@@ -79,10 +96,10 @@
                 <a href="site web aicha/index.html" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
             </div>
         </div>
-        <div class="projet">
+        <div class="projet" data-category="php">
             <a href="http://localhost/gest_medicale_coud/login.php" target="_blank" class="projet-image-link">
                 <div class="projet-image">
-                    <img src="Images\medecin.jpg" alt="Système de gestion médicale">
+                    <img src="Images/medecin.jpg" alt="Système de gestion médicale" loading="lazy" decoding="async">
                     <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
                 </div>
             </a>
@@ -93,10 +110,10 @@
                 <a href="http://localhost/gest_medicale_coud/login.php" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
             </div>
         </div>
-        <div class="projet">
+        <div class="projet" data-category="php">
             <a href="http://localhost/aidesociale/reclamation/" target="_blank" class="projet-image-link">
                 <div class="projet-image">
-                    <img src="Images\sociale.jpg" alt="Aide Sociale COUD">
+                    <img src="Images/sociale.jpg" alt="Aide Sociale COUD" loading="lazy" decoding="async">
                     <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
                 </div>
             </a>
@@ -167,13 +184,38 @@
     <p style="margin-top: 8px; font-size: 0.75rem;"><i class="fas fa-crown"></i> Code, élégance & innovation</p>
 </footer>
 
+<a href="https://wa.me/221781816241" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
 <script>
-    // Curseur personnalisé
+    // ========== PERSISTANCE DU THÈME ==========
+    const themeBtn = document.getElementById('theme-toggle');
+    if(localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        const icon = themeBtn.querySelector('i');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
+    themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        const isLight = document.body.classList.contains('light-mode');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        const icon = themeBtn.querySelector('i');
+        if(isLight) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    });
+
+    // ========== CURSEUR PERSONNALISÉ ==========
     (function() {
         if(window.matchMedia("(hover: none) and (pointer: coarse)").matches) return;
         const cursor = document.querySelector('.custom-cursor');
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
         document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
         function smoothFollow() {
             cursorX += (mouseX - cursorX) * 0.2;
@@ -183,46 +225,45 @@
             requestAnimationFrame(smoothFollow);
         }
         smoothFollow();
-        const hoverElements = document.querySelectorAll('a, button, .visit-btn, .social-link-pro, .projet-image-link, .glass-nav a, .theme-btn, .back-to-top, .projet, .submit-btn-pro');
+        const hoverElements = document.querySelectorAll('a, button, .visit-btn, .social-link-pro, .projet-image-link, .glass-nav a, .theme-btn, .back-to-top, .projet, .submit-btn-pro, .filter-btn, .cv-btn, .whatsapp-float');
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
-        const inputs = document.querySelectorAll('input, textarea');
-        inputs.forEach(inp => {
+        document.querySelectorAll('input, textarea').forEach(inp => {
             inp.addEventListener('mouseenter', () => cursor.style.opacity = '0.4');
             inp.addEventListener('mouseleave', () => cursor.style.opacity = '1');
         });
     })();
 
-    // Texte dynamique
+    // ========== TEXTE DYNAMIQUE ==========
     const texts = ["Développeuse Full-Stack", "Architecte web créative", "Experte en expériences digitales", "Code & Innovation"];
     let idx = 0, ch = 0, curTxt = "";
     const dynEl = document.getElementById("dynamic-text");
     function typePro() {
-        if(ch < texts[idx].length) { 
-            curTxt += texts[idx].charAt(ch); 
-            dynEl.innerHTML = curTxt; 
-            ch++; 
-            setTimeout(typePro, 70); 
-        } else { 
-            setTimeout(() => { 
-                curTxt = ""; 
-                ch = 0; 
-                idx = (idx+1)%texts.length; 
-                typePro(); 
-            }, 2200); 
+        if(ch < texts[idx].length) {
+            curTxt += texts[idx].charAt(ch);
+            dynEl.innerHTML = curTxt;
+            ch++;
+            setTimeout(typePro, 70);
+        } else {
+            setTimeout(() => {
+                curTxt = "";
+                ch = 0;
+                idx = (idx+1)%texts.length;
+                typePro();
+            }, 2200);
         }
-    } 
+    }
     typePro();
 
-    // Animation compétences & compteurs
+    // ========== COMPÉTENCES & COMPTEURS ==========
     const skillBars = document.querySelectorAll('.skill-level');
     const counters = document.querySelectorAll('.counter');
     let skillsAnimated = false;
     function animateProSkills() {
         skillBars.forEach(bar => { let w = bar.getAttribute('data-width'); bar.style.width = w+'%'; });
-        counters.forEach(c => { 
+        counters.forEach(c => {
             let target = parseInt(c.getAttribute('data-target'));
             let curr = 0;
             let step = target / 45;
@@ -236,33 +277,71 @@
     const obsSkills = new IntersectionObserver((entries) => { if(entries[0].isIntersecting && !skillsAnimated) { animateProSkills(); skillsAnimated = true; } }, { threshold: 0.3 });
     obsSkills.observe(document.getElementById('competences'));
 
-    // Dark mode
-    const themeBtn = document.getElementById('theme-toggle');
-    themeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        const icon = themeBtn.querySelector('i');
-        if(document.body.classList.contains('light-mode')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
-        else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
-    });
-
-    // Back to top
+    // ========== BACK TO TOP ==========
     const backBtn = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => { if(window.scrollY > 400) backBtn.classList.add('show'); else backBtn.classList.remove('show'); });
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 400) backBtn.classList.add('show');
+        else backBtn.classList.remove('show');
+    });
     backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // Formulaire
-    document.getElementById('contactFormPro').addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert("✓ Message envoyé avec succès ! Je vous recontacte rapidement.");
-        e.target.reset();
+    // ========== FORMULAIRE (fallback alert + validation email) ==========
+    const emailInput = document.getElementById('emailPro');
+    emailInput.addEventListener('input', () => {
+        const isValid = emailInput.checkValidity();
+        emailInput.style.borderColor = isValid ? '#00d4ff' : '#ff5555';
     });
-    
-    // Animation fade
-    const fadeElements = document.querySelectorAll('section, .projet, .timeline-item');
+    const contactForm = document.getElementById('contactFormPro');
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Si un jour vous activez EmailJS, décommentez et configurez
+        // emailjs.init("VOTRE_USER_ID");
+        // emailjs.sendForm('SERVICE_ID', 'TEMPLATE_ID', contactForm)
+        //   .then(...)
+        alert("✓ Message envoyé avec succès ! Je vous recontacte rapidement.");
+        contactForm.reset();
+    });
+
+    // ========== FILTRAGE DES PROJETS ==========
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projets = document.querySelectorAll('.projet');
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filterValue = btn.getAttribute('data-filter');
+            projets.forEach(projet => {
+                if(filterValue === 'all' || projet.getAttribute('data-category') === filterValue) {
+                    projet.style.display = '';
+                } else {
+                    projet.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // ========== BARRE DE PROGRESSION ==========
+    window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (winScroll / height) * 100;
+        const progressBar = document.getElementById('progress-bar');
+        if(progressBar) progressBar.style.width = scrolled + '%';
+    });
+
+    // ========== FADE AU SCROLL ==========
+    const fadeElements = document.querySelectorAll('section, .projet, .timeline-item, .certif-card, .testimonial-card');
     const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if(entry.isIntersecting) entry.target.style.opacity = '1'; else entry.target.style.opacity = '0'; });
+        entries.forEach(entry => {
+            if(entry.isIntersecting) entry.target.style.opacity = '1';
+            else entry.target.style.opacity = '0';
+        });
     }, { threshold: 0.1 });
-    fadeElements.forEach(el => { el.style.transition = 'opacity 0.6s ease'; el.style.opacity = '0'; fadeObserver.observe(el); });
+    fadeElements.forEach(el => {
+        el.style.transition = 'opacity 0.6s ease';
+        el.style.opacity = '0';
+        fadeObserver.observe(el);
+    });
 </script>
 </body>
 </html>
