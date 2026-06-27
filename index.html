@@ -1,347 +1,500 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Aicha Ndiaye | Portfolio — Développeuse Full-Stack</title>
-    <meta name="description" content="Portfolio d'Aicha Ndiaye – Développeuse Full-Stack créative. Découvrez mes projets, compétences et contactez-moi.">
-    <meta property="og:title" content="Aicha Ndiaye | Développeuse Full-Stack">
-    <meta property="og:description" content="Portfolio créatif et technique.">
-    <meta property="og:image" content="Images/apercu.jpg">
-    <meta property="og:url" content="https://ton-site-github.io">
-    <meta name="twitter:card" content="summary_large_image">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- EmailJS SDK (optionnel, commenté par défaut) -->
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script> -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aicha Ndiaye — Développeuse Full-Stack</title>
+<meta name="description" content="Portfolio d'Aicha Ndiaye – Développeuse Full-Stack. Projets, compétences, contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="progress-bar"></div>
-<button class="theme-btn" id="theme-toggle"><i class="fas fa-moon"></i></button>
-<button class="back-to-top" id="back-to-top"><i class="fas fa-arrow-up"></i></button>
-<div class="custom-cursor"></div>
+<div id="progress"></div>
 
-<nav class="glass-nav">
-    <a href="#about">À propos</a>
-    <a href="#competences">Compétences</a>
-    <a href="#projets">Projets</a>
-    <a href="#parcours">Parcours</a>
-    <a href="#contact">Contact</a>
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileClose"><i class="fas fa-times"></i></button>
+  <a href="#hero" onclick="closeMobile()">Accueil</a>
+  <a href="#about" onclick="closeMobile()">À propos</a>
+  <a href="#competences" onclick="closeMobile()">Compétences</a>
+  <a href="#projets" onclick="closeMobile()">Projets</a>
+  <a href="#parcours" onclick="closeMobile()">Parcours</a>
+  <a href="#cv" onclick="closeMobile()">CV</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-logo">Aicha<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#parcours">Parcours</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Me contacter</a>
+  <button class="nav-menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
 </nav>
 
-<header>
-    <h1>Aicha Ndiaye</h1>
-    <p id="dynamic-text"></p>
-</header>
-
-<section id="about">
-    <h2>À propos de moi</h2>
-    <p style="max-width: 780px; margin: 0 auto 30px; text-align: center; font-size: 1rem;">Développeuse web créative et technique, je transforme les idées en expériences digitales percutantes. Spécialisée dans l'univers full-stack, j'allie design raffiné, performances et code robuste. Actuellement en quête de défis innovants pour repousser les limites du web.</p>
-    <div class="stats">
-        <div class="stat"><div class="counter" data-target="5">0</div><p>Projets réalisés</p></div>
-        <div class="stat"><div class="counter" data-target="16">0</div><p>Mois d'expérience</p></div>
-        <div class="stat"><div class="counter" data-target="8">0</div><p>Technologies maîtrisées</p></div>
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-badge">Disponible pour opportunités</div>
+    <h1 class="hero-name">Aicha<br><span>Ndiaye</span></h1>
+    <p class="hero-role"><span class="typed" id="typedText"></span></p>
+    <p class="hero-desc">Développeuse Full-Stack créative basée à Dakar. Je transforme les idées en expériences web percutantes — code robuste, design raffiné, performances au rendez-vous.</p>
+    <div class="hero-actions">
+      <a href="#projets" class="btn-primary"><i class="fas fa-code"></i> Voir mes projets</a>
+      <a href="#cv" class="btn-secondary"><i class="fas fa-file-alt"></i> Mon CV</a>
     </div>
-    <div class="cv-btn-container">
-        <a href="CV%20-%20A%C3%AFcha%20pro.pdf" class="cv-btn" download="CV_Aicha_Ndiaye.pdf">
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-val"><span class="counter" data-target="5">0</span><span>+</span></div>
+        <div class="hero-stat-label">Projets réalisés</div>
+      </div>
+      <div>
+        <div class="hero-stat-val"><span class="counter" data-target="16">0</span><span>mois</span></div>
+        <div class="hero-stat-label">d'expérience</div>
+      </div>
+      <div>
+        <div class="hero-stat-val"><span class="counter" data-target="8">0</span><span>+</span></div>
+        <div class="hero-stat-label">Technologies</div>
+      </div>
     </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <div class="hero-avatar">AN</div>
+        <div>
+          <div class="hero-card-name">Aicha Ndiaye</div>
+          <div class="hero-card-title">Full-Stack Developer</div>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>HTML5 / CSS3</span><span>90%</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>JavaScript</span><span>68%</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="68"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>PHP / MySQL</span><span>72%</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="72"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label"><span>React.js</span><span>60%</span></div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="60"></div></div>
+      </div>
+      <div style="margin-top:18px;">
+        <span class="hero-tag">HTML5</span><span class="hero-tag">CSS3</span><span class="hero-tag">JS</span><span class="hero-tag">PHP</span><span class="hero-tag">React</span><span class="hero-tag">MySQL</span>
+      </div>
+    </div>
+  </div>
 </section>
 
+<div class="divider"></div>
+
+<!-- About -->
+<section id="about" class="section fade-in">
+  <div class="section-label">Qui suis-je ?</div>
+  <h2 class="section-title">À propos de moi</h2>
+  <p class="section-subtitle">Développeuse web passionnée par la création d'expériences digitales qui allient performance technique et design soigné. Je suis à la recherche de projets innovants où je peux apporter une vraie valeur.</p>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+    <div>
+      <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);font-weight:700;margin-bottom:8px;">Localisation</div>
+      <div style="color:#fff;font-weight:500;"><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:8px;"></i>Dakar, Sénégal</div>
+    </div>
+    <div>
+      <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);font-weight:700;margin-bottom:8px;">Statut</div>
+      <div style="color:#40d97f;font-weight:500;"><i class="fas fa-circle" style="font-size:.6rem;margin-right:8px;"></i>Disponible</div>
+    </div>
+    <div>
+      <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);font-weight:700;margin-bottom:8px;">Spécialité</div>
+      <div style="color:#fff;font-weight:500;">Full-Stack Web</div>
+    </div>
+    <div>
+      <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);font-weight:700;margin-bottom:8px;">Langues</div>
+      <div style="color:#fff;font-weight:500;">Français · Wolof</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Compétences -->
 <section id="competences">
-    <h2>Compétences techniques</h2>
-    <div class="skills-container">
-        <div class="skill"><span>HTML5 / CSS3 <i class="fab fa-html5"></i> 90%</span><div class="skill-bar"><div class="skill-level" data-width="90"></div></div></div>
-        <div class="skill"><span>JavaScript (ES6+) <i class="fab fa-js"></i> 68%</span><div class="skill-bar"><div class="skill-level" data-width="68"></div></div></div>
-        <div class="skill"><span>PHP / MySQL <i class="fab fa-php"></i> 72%</span><div class="skill-bar"><div class="skill-level" data-width="72"></div></div></div>
-        <div class="skill"><span>React.js <i class="fab fa-react"></i> 60%</span><div class="skill-bar"><div class="skill-level" data-width="60"></div></div></div>
+  <div class="inner">
+    <div class="fade-in">
+      <div class="section-label">Expertise</div>
+      <h2 class="section-title">Compétences techniques</h2>
+      <p class="section-subtitle">Un stack complet pour concevoir des interfaces modernes et des backends robustes.</p>
     </div>
+    <div class="skills-grid fade-in">
+      <div class="skill-card">
+        <div class="skill-card-icon"><i class="fab fa-html5" style="color:#e44d26;"></i></div>
+        <div class="skill-card-name">HTML5 / CSS3</div>
+        <div class="skill-card-level">90% — Expert</div>
+        <div class="skill-bar-sm"><div class="skill-bar-sm-fill" data-width="90"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon"><i class="fab fa-js" style="color:#f7df1e;"></i></div>
+        <div class="skill-card-name">JavaScript ES6+</div>
+        <div class="skill-card-level">68% — Intermédiaire avancé</div>
+        <div class="skill-bar-sm"><div class="skill-bar-sm-fill" data-width="68"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon"><i class="fab fa-php" style="color:#8892bf;"></i></div>
+        <div class="skill-card-name">PHP / MySQL</div>
+        <div class="skill-card-level">72% — Intermédiaire avancé</div>
+        <div class="skill-bar-sm"><div class="skill-bar-sm-fill" data-width="72"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon"><i class="fab fa-react" style="color:#61dafb;"></i></div>
+        <div class="skill-card-name">React.js</div>
+        <div class="skill-card-level">60% — Intermédiaire</div>
+        <div class="skill-bar-sm"><div class="skill-bar-sm-fill" data-width="60"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon"><i class="fas fa-database" style="color:#4f8cff;"></i></div>
+        <div class="skill-card-name">Bases de données</div>
+        <div class="skill-card-level">MySQL · Architecture relationnelle</div>
+        <div class="skill-bar-sm"><div class="skill-bar-sm-fill" data-width="70"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon"><i class="fas fa-mobile-alt" style="color:#40d97f;"></i></div>
+        <div class="skill-card-name">Responsive Design</div>
+        <div class="skill-card-level">Mobile-first · Cross-browser</div>
+        <div class="skill-bar-sm"><div class="skill-bar-sm-fill" data-width="85"></div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<div class="divider"></div>
 
-<section id="projets">
-    <h2>Projets récents</h2>
-    <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="all">Tous</button>
-        <button class="filter-btn" data-filter="html-css">HTML/CSS/JS</button>
-        <button class="filter-btn" data-filter="php">PHP/MySQL</button>
+<!-- Projets -->
+<section id="projets" class="section">
+  <div class="fade-in">
+    <div class="section-label">Réalisations</div>
+    <h2 class="section-title">Projets récents</h2>
+    <p class="section-subtitle">Des projets concrets, de la maquette au déploiement.</p>
+  </div>
+  <div class="filter-bar fade-in">
+    <button class="filter-btn active" data-filter="all">Tous</button>
+    <button class="filter-btn" data-filter="html-css">HTML / CSS / JS</button>
+    <button class="filter-btn" data-filter="php">PHP / MySQL</button>
+  </div>
+  <div class="projets-grid fade-in">
+    <div class="projet-card" data-category="html-css">
+      <div class="projet-img">
+        <img src="Images/photo.jpg" alt="Site Restaurant Aicha" loading="lazy">
+        <div class="projet-overlay">
+          <a href="RESTO AICHA/index.html" target="_blank" class="overlay-link"><i class="fas fa-arrow-right"></i> Explorer</a>
+        </div>
+      </div>
+      <div class="projet-body">
+        <h3>Site Restaurant Aicha</h3>
+        <p>Vitrine gastronomique immersive, design élégant et entièrement responsive.</p>
+        <div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JS</span></div>
+      </div>
     </div>
-    <div class="projets-container" id="projetsContainer">
-        <div class="projet" data-category="html-css">
-            <a href="RESTO AICHA/index.html" target="_blank" class="projet-image-link">
-                <div class="projet-image">
-                    <img src="Images/photo.jpg" alt="Site Restaurant Aicha" loading="lazy" decoding="async">
-                    <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
-                </div>
-            </a>
-            <div class="projet-content">
-                <h3>Site Restaurant Aicha</h3>
-                <p>Vitrine gastronomique immersive, design élégant et responsive.</p>
-                <div class="tech-stack"><span>HTML5</span><span>CSS3</span><span>JS</span></div>
-                <a href="RESTO AICHA/index.html" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
-            </div>
+    <div class="projet-card" data-category="html-css">
+      <div class="projet-img">
+        <img src="Images/site.jpg" alt="Site web Aicha" loading="lazy">
+        <div class="projet-overlay">
+          <a href="site web aicha/index.html" target="_blank" class="overlay-link"><i class="fas fa-arrow-right"></i> Explorer</a>
         </div>
-        <div class="projet" data-category="html-css">
-            <a href="site web aicha/index.html" target="_blank" class="projet-image-link">
-                <div class="projet-image">
-                    <img src="Images/site.jpg" alt="Site web Aicha" loading="lazy" decoding="async">
-                    <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
-                </div>
-            </a>
-            <div class="projet-content">
-                <h3>Site web Aicha</h3>
-                <p>Portfolio personnel avec animations fluides et micro-interactions.</p>
-                <div class="tech-stack"><span>HTML5</span><span>CSS3</span><span>JS</span></div>
-                <a href="site web aicha/index.html" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
-            </div>
-        </div>
-        <div class="projet" data-category="php">
-            <a href="http://localhost/gest_medicale_coud/login.php" target="_blank" class="projet-image-link">
-                <div class="projet-image">
-                    <img src="Images/medecin.jpg" alt="Système de gestion médicale" loading="lazy" decoding="async">
-                    <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
-                </div>
-            </a>
-            <div class="projet-content">
-                <h3>Gestion Médicale</h3>
-                <p>Application sécurisée avec authentification & gestion de dossiers.</p>
-                <div class="tech-stack"><span>PHP</span><span>MySQL</span><span>CSS</span></div>
-                <a href="http://localhost/gest_medicale_coud/login.php" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
-            </div>
-        </div>
-        <div class="projet" data-category="php">
-            <a href="http://localhost/aidesociale/reclamation/" target="_blank" class="projet-image-link">
-                <div class="projet-image">
-                    <img src="Images/sociale.jpg" alt="Aide Sociale COUD" loading="lazy" decoding="async">
-                    <div class="overlay"><i class="fas fa-external-link-alt"></i><span>Explorer</span></div>
-                </div>
-            </a>
-            <div class="projet-content">
-                <h3>Aide Sociale COUD</h3>
-                <p>Plateforme de gestion d'aides financières et suivi des étudiants.</p>
-                <div class="tech-stack"><span>PHP</span><span>SQL</span><span>Bootstrap</span></div>
-                <a href="http://localhost/aidesociale/reclamation/" target="_blank" class="visit-btn"><i class="fas fa-arrow-right"></i> Voir le projet</a>
-            </div>
-        </div>
+      </div>
+      <div class="projet-body">
+        <h3>Site web Aicha</h3>
+        <p>Portfolio personnel avec animations fluides et micro-interactions soignées.</p>
+        <div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JS</span></div>
+      </div>
     </div>
+    <div class="projet-card" data-category="php">
+      <div class="projet-img">
+        <img src="Images/medecin.jpg" alt="Gestion Médicale" loading="lazy">
+        <div class="projet-overlay">
+          <a href="http://localhost/gest_medicale_coud/login.php" target="_blank" class="overlay-link"><i class="fas fa-arrow-right"></i> Explorer</a>
+        </div>
+      </div>
+      <div class="projet-body">
+        <h3>Gestion Médicale COUD</h3>
+        <p>Application sécurisée avec authentification et gestion complète des dossiers patients.</p>
+        <div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">CSS</span></div>
+      </div>
+    </div>
+    <div class="projet-card" data-category="php">
+      <div class="projet-img">
+        <img src="Images/sociale.jpg" alt="Aide Sociale COUD" loading="lazy">
+        <div class="projet-overlay">
+          <a href="http://localhost/aidesociale/reclamation/" target="_blank" class="overlay-link"><i class="fas fa-arrow-right"></i> Explorer</a>
+        </div>
+      </div>
+      <div class="projet-body">
+        <h3>Aide Sociale COUD</h3>
+        <p>Plateforme de gestion d'aides financières et suivi des étudiants en difficulté.</p>
+        <div class="tags"><span class="tag">PHP</span><span class="tag">SQL</span><span class="tag">Bootstrap</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<div class="divider"></div>
+
+<!-- Parcours -->
 <section id="parcours">
-    <h2>Parcours & formation</h2>
-    <div class="timeline">
-        <div class="timeline-item">
-            <div class="timeline-date">2024 - Présent</div>
-            <div class="timeline-content">
-                <h3>🎓 Full-Stack intensive program</h3>
-                <p>Maîtrise des écosystèmes modernes : architecture MVC, bases de données relationnelles, design patterns et déploiement.</p>
-            </div>
-        </div>
-        <div class="timeline-item">
-            <div class="timeline-date">2023 - 2024</div>
-            <div class="timeline-content">
-                <h3>💻 Projets digitaux & freelancing</h3>
-                <p>Création de sites vitrines, applications dynamiques et collaboration avec des startups locales.</p>
-            </div>
-        </div>
+  <div class="inner">
+    <div class="fade-in">
+      <div class="section-label">Mon parcours</div>
+      <h2 class="section-title">Formation & expérience</h2>
+      <p class="section-subtitle">Un chemin construit sur la curiosité, la pratique et les projets concrets.</p>
     </div>
+    <div class="timeline fade-in">
+      <div class="tl-item">
+        <div class="tl-date">2024 — Présent</div>
+        <div class="tl-card">
+          <h3>🎓 Programme Full-Stack Intensif</h3>
+          <p>Maîtrise des architectures MVC, bases de données relationnelles, design patterns et déploiement. Développement de projets réels pour le COUD.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2023 — 2024</div>
+        <div class="tl-card">
+          <h3>💻 Projets digitaux & freelancing</h3>
+          <p>Création de sites vitrines, applications dynamiques et collaboration avec des startups et structures locales au Sénégal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="contact">
-    <h2>Contact professionnel</h2>
-    <div class="contact-section-pro">
-        <div class="contact-grid">
-            <div>
-                <div class="contact-card-pro">
-                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                    <div><h3>Email</h3><p>aicha.ndiaye329@gmail.com</p></div>
-                </div>
-                <div class="contact-card-pro">
-                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-                    <div><h3>Téléphone</h3><p>+221 78 181 62 41</p></div>
-                </div>
-                <div class="contact-card-pro">
-                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div><h3>Localisation</h3><p>Dakar, Sénégal</p></div>
-                </div>
-                <div class="social-links-pro">
-                    <a href="https://github.com/AichaND181" class="social-link-pro" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/a%C3%AFcha-ndiaye-0327a6303/" class="social-link-pro" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <form id="contactFormPro">
-                <div class="input-group-pro"><i class="fas fa-user"></i><input type="text" id="namePro" placeholder="Nom complet" required></div>
-                <div class="input-group-pro"><i class="fas fa-envelope"></i><input type="email" id="emailPro" placeholder="Adresse email" required></div>
-                <div class="input-group-pro"><i class="fas fa-comment"></i><textarea rows="4" id="msgPro" placeholder="Votre message professionnel..." required></textarea></div>
-                <button type="submit" class="submit-btn-pro">Envoyer le message <i class="fas fa-paper-plane"></i></button>
-            </form>
-        </div>
+<div class="divider"></div>
+
+<!-- CV -->
+<section id="cv">
+  <div class="inner">
+    <div class="cv-text fade-in">
+      <div class="section-label">Curriculum Vitae</div>
+      <h2>Téléchargez<br>mon CV</h2>
+      <p>Mon CV complet détaille mes compétences, formations et projets. Disponible en français, prêt à être partagé avec vos équipes.</p>
+      <div class="cv-actions">
+        <a href="CV_Aicha_Ndiaye.pdf" download="CV_Aicha_Ndiaye.pdf" class="btn-gold">
+          <i class="fas fa-download"></i> Télécharger le CV
+        </a>
+        <a href="#contact" class="btn-secondary">
+          <i class="fas fa-envelope"></i> Me contacter
+        </a>
+      </div>
     </div>
+    <div class="cv-preview fade-in">
+      <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);font-weight:700;margin-bottom:16px;">Aperçu rapide</div>
+      <div class="cv-line"><i class="fas fa-user"></i><span>Nom :</span> <strong>Aicha Ndiaye</strong></div>
+      <div class="cv-line"><i class="fas fa-code"></i><span>Poste :</span> <strong>Développeuse Full-Stack</strong></div>
+      <div class="cv-line"><i class="fas fa-map-marker-alt"></i><span>Lieu :</span> <strong>Dakar, Sénégal</strong></div>
+      <div class="cv-line"><i class="fas fa-envelope"></i><span>Email :</span> <strong>aicha.ndiaye329@gmail.com</strong></div>
+      <div class="cv-line"><i class="fas fa-phone"></i><span>Tél :</span> <strong>+221 78 181 62 41</strong></div>
+      <div class="cv-line"><i class="fab fa-github"></i><span>GitHub :</span> <strong>AichaND181</strong></div>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);">
+        <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);font-weight:700;margin-bottom:10px;">Stack principal</div>
+        <span class="hero-tag">HTML5</span><span class="hero-tag">CSS3</span><span class="hero-tag">JS</span><span class="hero-tag">PHP</span><span class="hero-tag">MySQL</span><span class="hero-tag">React</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Contact -->
+<section id="contact" class="section">
+  <div class="fade-in">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Travaillons ensemble</h2>
+    <p class="section-subtitle">Un projet en tête ? Une collaboration ? Écrivez-moi, je réponds sous 24h.</p>
+  </div>
+  <div class="contact-grid fade-in">
+    <div class="contact-info">
+      <h3>Parlons de votre projet</h3>
+      <div class="cinfo-item">
+        <div class="cinfo-icon"><i class="fas fa-envelope"></i></div>
+        <div>
+          <div class="cinfo-label">Email</div>
+          <div class="cinfo-val">aicha.ndiaye329@gmail.com</div>
+        </div>
+      </div>
+      <div class="cinfo-item">
+        <div class="cinfo-icon"><i class="fas fa-phone"></i></div>
+        <div>
+          <div class="cinfo-label">Téléphone</div>
+          <div class="cinfo-val">+221 78 181 62 41</div>
+        </div>
+      </div>
+      <div class="cinfo-item">
+        <div class="cinfo-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div>
+          <div class="cinfo-label">Localisation</div>
+          <div class="cinfo-val">Dakar, Sénégal</div>
+        </div>
+      </div>
+      <div class="social-row">
+        <a href="https://github.com/AichaND181" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/a%C3%AFcha-ndiaye-0327a6303/" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://wa.me/221781816241" target="_blank" class="social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div>
+      <form id="contactForm">
+        <div class="form-field">
+          <label>Nom complet</label>
+          <input type="text" id="fname" placeholder="Votre nom" required>
+        </div>
+        <div class="form-field">
+          <label>Adresse email</label>
+          <input type="email" id="femail" placeholder="vous@example.com" required>
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea id="fmsg" placeholder="Décrivez votre projet ou votre demande..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+          <i class="fas fa-paper-plane"></i> Envoyer le message
+        </button>
+        <div id="status-msg"></div>
+      </form>
+    </div>
+  </div>
 </section>
 
 <footer>
-    <p>© 2026 Aicha Ndiaye — Développeuse full-stack & créative</p>
-    <p style="margin-top: 8px; font-size: 0.75rem;"><i class="fas fa-crown"></i> Code, élégance & innovation</p>
+  <p>© 2026 <strong>Aicha Ndiaye</strong> — Développeuse Full-Stack · Dakar, Sénégal</p>
+  <p style="margin-top:6px;font-size:.75rem;">Code · Élégance · Innovation</p>
 </footer>
 
-<a href="https://wa.me/221781816241" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-    <i class="fab fa-whatsapp"></i>
+<a href="https://wa.me/221781816241" class="wa-float" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
 </a>
 
+<button class="btt" id="btt" title="Retour en haut"><i class="fas fa-arrow-up"></i></button>
+
 <script>
-    // ========== PERSISTANCE DU THÈME ==========
-    const themeBtn = document.getElementById('theme-toggle');
-    if(localStorage.getItem('theme') === 'light') {
-        document.body.classList.add('light-mode');
-        const icon = themeBtn.querySelector('i');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
+// ── Progress bar
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const scrolled = document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = (scrolled / height * 100) + '%';
+});
+
+// ── Back to top
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('show', window.scrollY > 400);
+});
+btt.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+// ── Mobile nav
+const menuBtn = document.getElementById('menuBtn');
+const mobileNav = document.getElementById('mobileNav');
+const mobileClose = document.getElementById('mobileClose');
+menuBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+function closeMobile() { mobileNav.classList.remove('open'); }
+
+// ── Typed text
+const texts = ["Développeuse Full-Stack", "Architecte web créative", "Experte en PHP & MySQL", "Code & Innovation"];
+let ti = 0, ci = 0, cur = '';
+const typed = document.getElementById('typedText');
+function typeNext() {
+  if (ci < texts[ti].length) {
+    cur += texts[ti][ci++];
+    typed.textContent = cur;
+    setTimeout(typeNext, 70);
+  } else {
+    setTimeout(() => {
+      cur = ''; ci = 0; ti = (ti + 1) % texts.length;
+      typeNext();
+    }, 2200);
+  }
+}
+typeNext();
+
+// ── Intersection observer for fade-in + skill bars + counters
+let countersRun = false;
+function runCounters() {
+  document.querySelectorAll('.counter').forEach(el => {
+    const target = +el.dataset.target;
+    let cur = 0;
+    const step = target / 50;
+    const up = () => {
+      cur += step;
+      if (cur < target) { el.textContent = Math.ceil(cur); requestAnimationFrame(up); }
+      else el.textContent = target;
+    };
+    up();
+  });
+}
+function animateBars(container) {
+  container.querySelectorAll('.skill-bar-fill, .skill-bar-sm-fill').forEach(bar => {
+    bar.style.width = bar.dataset.width + '%';
+  });
+}
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('visible');
+    if (!countersRun && e.target.id === 'hero') {
+      countersRun = true;
+      setTimeout(runCounters, 400);
+      // hero bars
+      document.querySelectorAll('.hero-visual .skill-bar-fill').forEach(b => {
+        b.style.width = b.dataset.width + '%';
+      });
     }
-    themeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        const isLight = document.body.classList.contains('light-mode');
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        const icon = themeBtn.querySelector('i');
-        if(isLight) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
+    // skill cards
+    if (e.target.closest('#competences')) animateBars(e.target);
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-in, #hero, #competences').forEach(el => io.observe(el));
+
+// ── Filter projects
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.projet-card').forEach(card => {
+      card.style.display = (f === 'all' || card.dataset.category === f) ? '' : 'none';
     });
+  });
+});
 
-    // ========== CURSEUR PERSONNALISÉ ==========
-    (function() {
-        if(window.matchMedia("(hover: none) and (pointer: coarse)").matches) return;
-        const cursor = document.querySelector('.custom-cursor');
-        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
-        function smoothFollow() {
-            cursorX += (mouseX - cursorX) * 0.2;
-            cursorY += (mouseY - cursorY) * 0.2;
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            requestAnimationFrame(smoothFollow);
-        }
-        smoothFollow();
-        const hoverElements = document.querySelectorAll('a, button, .visit-btn, .social-link-pro, .projet-image-link, .glass-nav a, .theme-btn, .back-to-top, .projet, .submit-btn-pro, .filter-btn, .cv-btn, .whatsapp-float');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-        document.querySelectorAll('input, textarea').forEach(inp => {
-            inp.addEventListener('mouseenter', () => cursor.style.opacity = '0.4');
-            inp.addEventListener('mouseleave', () => cursor.style.opacity = '1');
-        });
-    })();
+// ── Contact form
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const msg = document.getElementById('status-msg');
+  msg.style.color = '#40d97f';
+  msg.textContent = '✓ Message envoyé ! Je vous recontacte rapidement.';
+  e.target.reset();
+  setTimeout(() => msg.textContent = '', 5000);
+});
 
-    // ========== TEXTE DYNAMIQUE ==========
-    const texts = ["Développeuse Full-Stack", "Architecte web créative", "Experte en expériences digitales", "Code & Innovation"];
-    let idx = 0, ch = 0, curTxt = "";
-    const dynEl = document.getElementById("dynamic-text");
-    function typePro() {
-        if(ch < texts[idx].length) {
-            curTxt += texts[idx].charAt(ch);
-            dynEl.innerHTML = curTxt;
-            ch++;
-            setTimeout(typePro, 70);
-        } else {
-            setTimeout(() => {
-                curTxt = "";
-                ch = 0;
-                idx = (idx+1)%texts.length;
-                typePro();
-            }, 2200);
-        }
-    }
-    typePro();
-
-    // ========== COMPÉTENCES & COMPTEURS ==========
-    const skillBars = document.querySelectorAll('.skill-level');
-    const counters = document.querySelectorAll('.counter');
-    let skillsAnimated = false;
-    function animateProSkills() {
-        skillBars.forEach(bar => { let w = bar.getAttribute('data-width'); bar.style.width = w+'%'; });
-        counters.forEach(c => {
-            let target = parseInt(c.getAttribute('data-target'));
-            let curr = 0;
-            let step = target / 45;
-            let upd = () => {
-                if(curr < target) { curr += step; c.innerText = Math.ceil(curr); requestAnimationFrame(upd); }
-                else c.innerText = target;
-            };
-            upd();
-        });
-    }
-    const obsSkills = new IntersectionObserver((entries) => { if(entries[0].isIntersecting && !skillsAnimated) { animateProSkills(); skillsAnimated = true; } }, { threshold: 0.3 });
-    obsSkills.observe(document.getElementById('competences'));
-
-    // ========== BACK TO TOP ==========
-    const backBtn = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-        if(window.scrollY > 400) backBtn.classList.add('show');
-        else backBtn.classList.remove('show');
-    });
-    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // ========== FORMULAIRE (fallback alert + validation email) ==========
-    const emailInput = document.getElementById('emailPro');
-    emailInput.addEventListener('input', () => {
-        const isValid = emailInput.checkValidity();
-        emailInput.style.borderColor = isValid ? '#00d4ff' : '#ff5555';
-    });
-    const contactForm = document.getElementById('contactFormPro');
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Si un jour vous activez EmailJS, décommentez et configurez
-        // emailjs.init("VOTRE_USER_ID");
-        // emailjs.sendForm('SERVICE_ID', 'TEMPLATE_ID', contactForm)
-        //   .then(...)
-        alert("✓ Message envoyé avec succès ! Je vous recontacte rapidement.");
-        contactForm.reset();
-    });
-
-    // ========== FILTRAGE DES PROJETS ==========
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projets = document.querySelectorAll('.projet');
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const filterValue = btn.getAttribute('data-filter');
-            projets.forEach(projet => {
-                if(filterValue === 'all' || projet.getAttribute('data-category') === filterValue) {
-                    projet.style.display = '';
-                } else {
-                    projet.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    // ========== BARRE DE PROGRESSION ==========
-    window.addEventListener('scroll', () => {
-        const winScroll = document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - window.innerHeight;
-        const scrolled = (winScroll / height) * 100;
-        const progressBar = document.getElementById('progress-bar');
-        if(progressBar) progressBar.style.width = scrolled + '%';
-    });
-
-    // ========== FADE AU SCROLL ==========
-    const fadeElements = document.querySelectorAll('section, .projet, .timeline-item, .certif-card, .testimonial-card');
-    const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) entry.target.style.opacity = '1';
-            else entry.target.style.opacity = '0';
-        });
-    }, { threshold: 0.1 });
-    fadeElements.forEach(el => {
-        el.style.transition = 'opacity 0.6s ease';
-        el.style.opacity = '0';
-        fadeObserver.observe(el);
-    });
+// Hero visible trigger
+document.getElementById('hero').classList.add('visible');
+setTimeout(() => {
+  runCounters();
+  document.querySelectorAll('.hero-visual .skill-bar-fill').forEach(b => {
+    b.style.width = b.dataset.width + '%';
+  });
+}, 300);
 </script>
 </body>
 </html>
