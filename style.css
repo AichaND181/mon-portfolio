@@ -547,3 +547,60 @@ footer strong{color:#fff;}
 /* ─── FADE ANIMATION ─────────────────────────────────── */
 .fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
 .fade-in.visible{opacity:1;transform:none;}
+
+.custom-cursor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+  }
+
+.custom-cursor .cursor-ring {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #00d4ff;
+    background: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+}
+
+.custom-cursor .cursor-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00d4ff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.custom-cursor.hover .cursor-ring {
+    width: 50px;
+    height: 50px;
+    border-color: #ffffff;
+    opacity: 0.6;
+}
+
+.custom-cursor.hover .cursor-dot {
+    transform: translate(-50%, -50%) scale(2);
+    background: #ffffff;
+}
+
+.custom-cursor.click .cursor-ring {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+}
+
+* {
+    cursor: none !important;
+}
