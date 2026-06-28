@@ -13,6 +13,10 @@
 <body>
 
 <div id="progress"></div>
+<div class="custom-cursor">
+    <div class="cursor-ring"></div>
+    <div class="cursor-dot"></div>
+</div>
 
 <!-- Mobile Nav -->
 <div class="mobile-nav" id="mobileNav">
@@ -508,6 +512,43 @@ setTimeout(() => {
     b.style.width = b.dataset.width + '%';
   });
 }, 300);
+
+(function() {
+    if(window.matchMedia("(hover: none) and (pointer: coarse)").matches) return;
+    const cursor = document.querySelector('.custom-cursor');
+    let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function smoothFollow() {
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        requestAnimationFrame(smoothFollow);
+    }
+    smoothFollow();
+
+    // Effet hover
+    const hoverElements = document.querySelectorAll('a, button, .visit-btn, .social-link-pro, .projet-image-link, .glass-nav a, .theme-btn, .back-to-top, .projet, .submit-btn-pro, .filter-btn, .cv-btn, .whatsapp-float, .github-btn');
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
+    // Effet click
+    document.addEventListener('mousedown', () => cursor.classList.add('click'));
+    document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+
+    // Sur les inputs
+    document.querySelectorAll('input, textarea').forEach(inp => {
+        inp.addEventListener('mouseenter', () => cursor.style.opacity = '0.3');
+        inp.addEventListener('mouseleave', () => cursor.style.opacity = '1');
+    });
+})();
 </script>
 </body>
 </html>
