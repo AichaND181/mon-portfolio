@@ -1,0 +1,255 @@
+/* ================================================================
+   ARCHI-COUD — Dashboard Styles
+   ================================================================ */
+
+body {
+  background: var(--bleu-tres-clair);
+  min-height: 100vh;
+}
+
+/* --------- Contenu principal --------- */
+.contenu-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 24px 60px 24px;
+}
+
+.entete-page {
+  background: var(--blanc);
+  border-radius: 16px;
+  box-shadow: var(--ombre-carte);
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.entete-page h1 {
+  margin: 0;
+  font-size: 22px;
+  color: #1a1a1a;
+}
+
+.entete-page .salutation {
+  color: #1a1a1a;
+  font-size: 15px;
+}
+
+/* --------- Cartes statistiques --------- */
+.grille-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.carte-stat {
+  background: var(--blanc);
+  border-radius: 14px;
+  box-shadow: var(--ombre-carte);
+  padding: 20px 22px;
+  border-left: 4px solid var(--bleu-principal);
+}
+
+.carte-stat.accent-clair {
+  border-left-color: var(--bleu-clair);
+}
+
+.carte-stat.accent-fonce {
+  border-left-color: var(--bleu-fonce);
+}
+
+.carte-stat .valeur-stat {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.carte-stat .libelle-stat {
+  color: #1a1a1a;
+  font-size: 13.5px;
+  margin-top: 4px;
+}
+
+/* --------- Colonnes (documents + départements) --------- */
+.colonnes-dashboard {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 800px) {
+  .colonnes-dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panneau {
+  background: var(--blanc);
+  border-radius: 14px;
+  box-shadow: var(--ombre-carte);
+  padding: 22px 24px;
+}
+
+.panneau h2 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: #1a1a1a;
+}
+
+.barre-recherche-panneau {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.barre-recherche-panneau input {
+  flex: 1;
+  padding: 11px 14px;
+  border: 1.5px solid var(--gris-bordure);
+  border-radius: 10px;
+  background: var(--gris-champ);
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.barre-recherche-panneau input:focus {
+  outline: none;
+  border-color: var(--bleu-principal);
+  background: var(--blanc);
+}
+
+.barre-recherche-panneau button {
+  background: var(--bleu-principal);
+  border: none;
+  color: var(--blanc);
+  border-radius: 10px;
+  padding: 0 16px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.barre-recherche-panneau button:hover {
+  background: var(--bleu-fonce);
+}
+
+.liste-documents {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.liste-documents li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gris-bordure);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.liste-documents li:last-child {
+  border-bottom: none;
+}
+
+.code-document {
+  font-size: 12.5px;
+  color: #1a1a1a;
+  background: var(--gris-champ);
+  border: 1px solid var(--gris-bordure);
+  border-radius: 6px;
+  padding: 3px 8px;
+  margin-right: 10px;
+  font-family: monospace;
+}
+
+.titre-document {
+  color: #1a1a1a;
+  font-size: 14.5px;
+}
+
+.badge-service {
+  background: var(--bleu-tres-clair);
+  color: var(--bleu-fonce);
+  border: 1px solid var(--bleu-clair);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.liste-departements {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.liste-departements li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gris-bordure);
+  color: #1a1a1a;
+  font-size: 14.5px;
+}
+
+.liste-departements li:last-child {
+  border-bottom: none;
+}
+
+.compteur-departement {
+  background: var(--bleu-principal);
+  color: var(--blanc);
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+/* --------- En-tête liste documents --------- */
+.entete-liste-documents {
+  display: flex;
+  align-items: center;
+  padding: 6px 4px 10px 4px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--gris-texte);
+  border-bottom: 1px solid var(--gris-bordure);
+  margin-bottom: 4px;
+}
+
+.entete-liste-documents .entete-code {
+  width: 128px;
+  flex-shrink: 0;
+}
+
+.entete-liste-documents .entete-titre {
+  flex: 1;
+}
+
+.entete-liste-documents .entete-departement {
+  flex-shrink: 0;
+}
+
+.entete-liste-documents .entete-departement-statut {
+  display: flex;
+  gap: 8px;
+}
+
+.entete-liste-documents .entete-departement {
+  width: 128px;
+  text-align: left;
+}
+
+.entete-liste-documents .entete-statut {
+  width: 100px;
+  text-align: left;
+}

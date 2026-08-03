@@ -1,0 +1,376 @@
+/* ================================================================
+   ARCHI-COUD — Recherche
+   ================================================================ */
+
+body {
+  background: var(--bleu-tres-clair);
+  min-height: 100vh;
+}
+
+/* --------- CONTENU PRINCIPAL --------- */
+.contenu-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 20px 60px 20px;
+    width: 100%;
+    flex: 1;
+}
+
+/* --------- Cartes statistiques --------- */
+.grille-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.carte-stat {
+  background: var(--blanc);
+  border-radius: 14px;
+  box-shadow: var(--ombre-carte);
+  padding: 20px 22px;
+  border-left: 4px solid var(--bleu-principal);
+}
+
+.carte-stat.accent-clair {
+  border-left-color: var(--bleu-clair);
+}
+
+.carte-stat.accent-fonce {
+  border-left-color: var(--bleu-fonce);
+}
+
+.carte-stat .valeur-stat {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.carte-stat .libelle-stat {
+  color: #1a1a1a;
+  font-size: 13.5px;
+  margin-top: 4px;
+}
+
+/* --------- EN-TÊTE PAGE --------- */
+.entete-page {
+    background: var(--blanc);
+    border-radius: 16px;
+    box-shadow: var(--ombre-carte);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.entete-page h1 {
+    margin: 0;
+    font-size: 20px;
+    color: #1a1a1a;
+}
+
+/* --------- BARRE DE FILTRES --------- */
+.barre-filtres {
+    background: var(--blanc);
+    border-radius: 14px;
+    box-shadow: var(--ombre-carte);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+}
+
+.grille-formulaire {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px 20px;
+    margin-bottom: 8px;
+}
+
+.champ-formulaire {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.champ-formulaire.pleine-largeur {
+    grid-column: 1 / -1;
+}
+
+.champ-formulaire label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--bleu-fonce);
+}
+
+.champ-formulaire input,
+.champ-formulaire select {
+    padding: 10px 12px;
+    border: 1.5px solid var(--gris-bordure);
+    border-radius: 10px;
+    font-size: 14px;
+    color: #1a1a1a;
+    background: var(--blanc);
+    font-family: inherit;
+    width: 100%;
+    transition: border-color 0.15s ease;
+}
+
+.champ-formulaire input:focus,
+.champ-formulaire select:focus {
+    outline: none;
+    border-color: var(--bleu-principal);
+}
+
+/* --------- ZONE ACTIONS FORMULAIRE --------- */
+.zone-actions-formulaire {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-top: 8px;
+    border-top: 1px solid var(--gris-bordure);
+}
+
+.bouton-reinitialiser {
+    background: var(--blanc);
+    border: 1.5px solid var(--gris-bordure);
+    color: #1a1a1a;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.bouton-reinitialiser:hover {
+    background: var(--gris-champ);
+}
+
+.bouton-filtrer {
+    background: var(--bleu-principal);
+    border: none;
+    color: var(--blanc);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.bouton-filtrer:hover {
+    background: var(--bleu-fonce);
+}
+
+/* --------- PANNEAU RÉSULTATS --------- */
+.panneau {
+    background: var(--blanc);
+    border-radius: 14px;
+    box-shadow: var(--ombre-carte);
+    padding: 20px 24px;
+}
+
+.panneau h2 {
+    margin: 0 0 14px 0;
+    font-size: 16px;
+    color: #1a1a1a;
+}
+
+/* --------- EN-TÊTE LISTE DOCUMENTS --------- */
+.entete-liste-documents {
+    display: grid;
+    grid-template-columns: 120px 1fr 140px 100px;
+    gap: 12px;
+    padding: 6px 4px 10px 4px;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--gris-texte);
+    border-bottom: 1px solid var(--gris-bordure);
+    margin-bottom: 4px;
+}
+
+.entete-liste-documents span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --------- LISTE DOCUMENTS --------- */
+.liste-documents {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.liste-documents li {
+    display: grid;
+    grid-template-columns: 120px 1fr 140px 100px;
+    gap: 12px;
+    padding: 12px 4px;
+    border-bottom: 1px solid var(--gris-bordure);
+    align-items: center;
+    font-size: 14px;
+    color: #1a1a1a;
+}
+
+.liste-documents li:last-child {
+    border-bottom: none;
+}
+
+.liste-documents li .code-doc {
+    font-family: monospace;
+    font-weight: 700;
+    color: var(--bleu-fonce);
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.liste-documents li .titre-doc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.liste-documents li .departement-doc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+.badge-statut {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.badge-statut.numerise {
+    background: #e3f6ea;
+    color: #1e7d46;
+}
+
+.badge-statut.en_cours {
+    background: var(--bleu-tres-clair);
+    color: var(--bleu-fonce);
+}
+
+.badge-statut.a_traiter {
+    background: #fdf1dc;
+    color: #9a6a12;
+}
+
+.message-aucun-resultat {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--gris-texte);
+    font-size: 14px;
+}
+
+/* --------- MESSAGE SUPPRESSION --------- */
+.message-formulaire {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    display: none;
+}
+
+.message-formulaire.succes {
+    background: #e3f6ea;
+    color: #1e7d46;
+    display: block;
+}
+
+.message-formulaire.erreur {
+    background: #fdeaea;
+    color: #b3261e;
+    display: block;
+}
+
+/* --------- RESPONSIVE --------- */
+@media (max-width: 768px) {
+    .entete-liste-documents {
+        grid-template-columns: 100px 1fr 100px 80px;
+        gap: 8px;
+        font-size: 10px;
+    }
+
+    .liste-documents li {
+        grid-template-columns: 100px 1fr 100px 80px;
+        gap: 8px;
+        font-size: 12.5px;
+        padding: 10px 4px;
+    }
+
+    .grille-formulaire {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .grille-formulaire {
+        grid-template-columns: 1fr;
+    }
+
+    .entete-liste-documents {
+        display: none;
+    }
+
+    .liste-documents li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 12px 8px;
+        border-bottom: 2px solid var(--gris-bordure);
+    }
+
+    .liste-documents li .code-doc {
+        font-size: 12px;
+    }
+
+    .liste-documents li .titre-doc {
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .liste-documents li .departement-doc {
+        font-size: 12px;
+        color: var(--gris-texte);
+    }
+
+    .liste-documents li .statut-doc {
+        justify-self: start;
+    }
+
+    .zone-actions-formulaire {
+        flex-direction: column;
+    }
+
+    .zone-actions-formulaire button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .contenu-dashboard {
+        padding: 16px 12px 40px 12px;
+    }
+
+    .barre-filtres {
+        padding: 16px;
+    }
+
+    .panneau {
+        padding: 16px;
+    }
+}

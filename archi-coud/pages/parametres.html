@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres — ARCHI-COUD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/parametres.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-brand">
+            <div class="logo-icon"><img src="../assets/images/logo-coud.png" alt="Logo COUD" class="logo-coud-img"></div>
+            <div class="brand-text"><h1>ARCHI-COUD</h1></div>
+        </div>
+
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Ouvrir le menu"><i class="fas fa-bars"></i></button>
+
+        <div class="navbar-links" id="navbarLinks">
+            <a href="../dashboard.html"><i class="fas fa-th-large"></i> Tableau de bord</a>
+            <a href="documents.html"><i class="fas fa-folder-open"></i> Documents</a>
+            <a href="collecte.html"><i class="fas fa-plus"></i> Collecte</a>
+            <a href="recherche.html"><i class="fas fa-search"></i> Recherche</a>
+            <a href="statistiques.html"><i class="fas fa-chart-bar"></i> Statistiques</a>
+            <a href="utilisateurs.html"><i class="fas fa-users"></i> Utilisateurs</a>
+            <!-- <a href="parametres.html" class="active"><i class="fas fa-gear"></i> Paramètres</a>
+                <a href="#" class="logout-link" onclick="openLogoutModal(); return false;"><i class="fas fa-right-from-bracket"></i> Déconnexion</a> -->
+
+        </div>
+
+        <div class="navbar-user">
+            <div class="avatar">AD</div>
+            <div class="user-dropdown">
+                <a href="parametres.html"><i class="fas fa-gear"></i> Paramètres</a>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-logout" onclick="openLogoutModal()"><i class="fas fa-right-from-bracket"></i> Déconnexion</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal-overlay" id="logoutModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3><i class="fas fa-right-from-bracket" style="color:var(--red-500)"></i> Déconnexion</h3>
+                <button class="modal-close" onclick="closeLogoutModal()"><i class="fas fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" style="text-align:center">
+                <div class="logout-icon-circle"><i class="fas fa-right-from-bracket"></i></div>
+                <p class="logout-text">
+                    Êtes-vous sûr de vouloir vous <strong>déconnecter</strong> ?<br>
+                    Vous devrez saisir vos identifiants pour accéder à nouveau à la plateforme.
+                </p>
+                <div class="logout-user-badge" style="display:inline-flex">
+                   <span class="lub-avatar">AD</span>
+<span id="logoutUserName">Admin</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeLogoutModal()"><i class="fas fa-xmark"></i> Annuler</button>
+                <button class="btn btn-danger" onclick="confirmLogout()"><i class="fas fa-right-from-bracket"></i> Se déconnecter</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <header class="header">
+            <div class="header-left">
+                <div class="breadcrumb">
+                    <a href="../dashboard.html"><i class="fas fa-home"></i></a>
+                    <i class="fas fa-chevron-right" style="font-size:10px"></i>
+                    <span class="current">Paramètres</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="header-btn" title="Notifications"><i class="fas fa-bell"></i></button>
+            </div>
+        </header>
+
+        <div class="page-content">
+            <div class="page-title-row animate-in">
+                <div>
+                    <h2>Paramètres</h2>
+                    <p>Configuration de la plateforme et de votre compte</p>
+                </div>
+            </div>
+
+            <div class="settings-layout animate-in delay-1">
+
+                <nav class="settings-nav">
+                    <a href="#" class="active" data-section="section-profil"><i class="fas fa-user"></i> Profil</a>
+                    <a href="#" data-section="section-securite"><i class="fas fa-shield-halved"></i> Sécurité</a>
+                    <a href="#" data-section="section-archives"><i class="fas fa-folder-open"></i> Archives</a>
+                    <a href="#" data-section="section-notifications"><i class="fas fa-bell"></i> Notifications</a>
+                    <a href="#" data-section="section-systeme"><i class="fas fa-server"></i> Système</a>
+                </nav>
+
+                <div>
+
+                    <!-- Profil -->
+                    <div class="settings-section active" id="section-profil">
+                        <div class="settings-card">
+                            <div class="sc-header">
+                                <h3>Informations personnelles</h3>
+                                <p>Vos informations de compte</p>
+                            </div>
+                            <div class="sc-body">
+                                <div class="form-row">
+                                    <div class="field">
+                                        <label>Nom <span class="required">*</span></label>
+                                        <input type="text" id="profilNom" value="NIANG">
+                                    </div>
+                                    <div class="field">
+                                        <label>Prénom <span class="required">*</span></label>
+                                        <input type="text" id="profilPrenom" value="Coumba Dia">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="field">
+                                        <label>Email <span class="required">*</span></label>
+                                        <input type="email" id="profilEmail" value="coumba.niang@coud.sn">
+                                    </div>
+                                    <div class="field">
+                                        <label>Téléphone</label>
+                                        <input type="tel" id="profilTel" value="+221 77 123 45 67">
+                                    </div>
+                                </div>
+                                <div class="form-row single">
+                                    <div class="field">
+                                        <label>Fonction</label>
+                                        <input type="text" id="profilFonction" value="Conservateur du Patrimoine archivistique">
+                                    </div>
+                                </div>
+                                <div class="settings-actions">
+                                    <button class="btn btn-secondary">Annuler</button>
+                                    <button class="btn btn-primary" onclick="saveProfil()"><i class="fas fa-check"></i> Sauvegarder</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sécurité -->
+                    <div class="settings-section" id="section-securite">
+                        <div class="settings-card">
+                            <div class="sc-header">
+                                <h3>Changer le mot de passe</h3>
+                                <p>Modifiez votre mot de passe de connexion</p>
+                            </div>
+                            <div class="sc-body">
+                                <div class="form-row single">
+                                    <div class="field">
+                                        <label>Mot de passe actuel</label>
+                                        <input type="password" id="secuCurrent" placeholder="Saisissez le mot de passe actuel">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="field">
+                                        <label>Nouveau mot de passe</label>
+                                        <input type="password" id="secuNew" placeholder="Minimum 8 caractères">
+                                        <span class="field-hint">Utilisez des majuscules, minuscules, chiffres et symboles.</span>
+                                    </div>
+                                    <div class="field">
+                                        <label>Confirmer le mot de passe</label>
+                                        <input type="password" id="secuConfirm" placeholder="Retapez le nouveau mot de passe">
+                                    </div>
+                                </div>
+                                <div class="settings-actions">
+                                    <button class="btn btn-primary" onclick="savePassword()"><i class="fas fa-lock"></i> Mettre à jour</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-card">
+                            <div class="sc-header">
+                                <h3>Sessions actives</h3>
+                                <p>Appareils connectés à votre compte</p>
+                            </div>
+                            <div class="sc-body">
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4><i class="fas fa-desktop" style="color:var(--blue-500);margin-right:8px"></i>Chrome — Windows</h4>
+                                        <p>127.0.0.1 · Dernière activité : il y a 2 minutes</p>
+                                    </div>
+                                    <span class="role-badge admin" style="font-size:10px">Session actuelle</span>
+                                </div>
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4><i class="fas fa-mobile-screen" style="color:var(--gray-400);margin-right:8px"></i>Safari — iPhone</h4>
+                                        <p>192.168.1.15 · Dernière activité : il y a 3 jours</p>
+                                    </div>
+                                    <button class="btn btn-sm btn-secondary">Déconnecter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Archives -->
+                    <div class="settings-section" id="section-archives">
+                        <div class="settings-card">
+                            <div class="sc-header">
+                                <h3>Configuration des archives</h3>
+                                <p>Règles et paramètres de gestion documentaire</p>
+                            </div>
+                            <div class="sc-body">
+                                <div class="form-row">
+                                    <div class="field">
+                                        <label>Format de numérisation</label>
+                                        <select id="archiveFormat">
+                                            <option value="pdf">PDF (Portable Document Format)</option>
+                                            <option value="pdfa">PDF/A (Archivage long terme)</option>
+                                            <option value="tiff">TIFF (Haute qualité)</option>
+                                            <option value="jpeg">JPEG (Compression)</option>
+                                        </select>
+                                        <span class="field-hint">Le PDF empêche la modification des documents numérisés.</span>
+                                    </div>
+                                    <div class="field">
+                                        <label>Résolution (DPI)</label>
+                                        <select id="archiveDPI">
+                                            <option value="200">200 DPI</option>
+                                            <option value="300" selected>300 DPI</option>
+                                            <option value="400">400 DPI</option>
+                                            <option value="600">600 DPI</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="field">
+                                        <label>Mode de coloration</label>
+                                        <select id="archiveCouleur">
+                                            <option value="couleur" selected>Couleur</option>
+                                            <option value="gris">Niveaux de gris</option>
+                                            <option value="nb">Noir et blanc</option>
+                                        </select>
+                                    </div>
+                                    <div class="field">
+                                        <label>Nomenclature des fichiers</label>
+                                        <input type="text" id="archiveNomenclature" value="{DEPT}_{TYPE}_{ANNEE}_{NUM}">
+                                        <span class="field-hint">Variables : DEPT, TYPE, ANNEE, NUM, DATE</span>
+                                    </div>
+                                </div>
+                                <div class="settings-actions">
+                                    <button class="btn btn-primary" onclick="saveArchives()"><i class="fas fa-check"></i> Sauvegarder</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div class="settings-section" id="section-notifications">
+                        <div class="settings-card">
+                            <div class="sc-header">
+                                <h3>Préférences de notification</h3>
+                                <p>Choisissez les événements qui vous alertent</p>
+                            </div>
+                            <div class="sc-body">
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4>Nouveau document ajouté</h4>
+                                        <p>Être notifié lorsqu'un document est numérisé ou importé</p>
+                                    </div>
+                                    <label class="toggle-switch"><input type="checkbox" id="notifAjout" checked><span class="slider"></span></label>
+                                </div>
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4>Modification de document</h4>
+                                        <p>Être notifié lorsqu'un document est modifié ou reclassé</p>
+                                    </div>
+                                    <label class="toggle-switch"><input type="checkbox" id="notifModif" checked><span class="slider"></span></label>
+                                </div>
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4>Suppression de document</h4>
+                                        <p>Être notifié lorsqu'un document est supprimé</p>
+                                    </div>
+                                    <label class="toggle-switch"><input type="checkbox" id="notifSuppr" checked><span class="slider"></span></label>
+                                </div>
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4>Connexion d'un utilisateur</h4>
+                                        <p>Être notifié lorsqu'un utilisateur se connecte</p>
+                                    </div>
+                                    <label class="toggle-switch"><input type="checkbox" id="notifConnexion"><span class="slider"></span></label>
+                                </div>
+                                <div class="toggle-row">
+                                    <div class="toggle-info">
+                                        <h4>Rapport hebdomadaire</h4>
+                                        <p>Recevoir un résumé d'activité chaque lundi</p>
+                                    </div>
+                                    <label class="toggle-switch"><input type="checkbox" id="notifHebdo" checked><span class="slider"></span></label>
+                                </div>
+                                <div class="settings-actions">
+                                    <button class="btn btn-primary" onclick="saveNotifications()"><i class="fas fa-check"></i> Sauvegarder</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                 <!-- Système -->
+<div class="settings-section" id="section-systeme">
+    <div class="settings-card">
+        <div class="sc-header">
+            <h3>Informations système</h3>
+            <p>État de la plateforme</p>
+        </div>
+        <div class="sc-body">
+            <div class="form-row single">
+                <div class="field">
+                    <label>Version de la plateforme</label>
+                    <input type="text" id="sysVersion" value="ARCHI-COUD v1.0.0" readonly style="background:var(--gray-50);color:var(--gray-500)">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field">
+                    <label>Volume total des archives (physiques)</label>
+                    <input type="text" id="sysVolume" value="500 mètres linéaires" readonly style="background:var(--gray-50);color:var(--gray-500)">
+                </div>
+                <div class="field">
+                    <label>Documents numérisés</label>
+                    <input type="text" id="sysDocsNum" value="2 847 documents" readonly style="background:var(--gray-50);color:var(--gray-500)">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field">
+                    <label>Départements</label>
+                    <input type="text" id="sysDepts" value="18 départements" readonly style="background:var(--gray-50);color:var(--gray-500)">
+                </div>
+                <div class="field">
+                    <label>Catégories documentaires</label>
+                    <input type="text" id="sysCategories" value="15 types" readonly style="background:var(--gray-50);color:var(--gray-500)">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field">
+                    <label>Espace de stockage utilisé</label>
+                    <input type="text" id="sysStorage" value="48 GB / 200 GB (24%)" readonly style="background:var(--gray-50);color:var(--gray-500)">
+                </div>
+                <div class="field">
+                    <label>Dernière sauvegarde</label>
+                    <input type="text" id="sysBackup" value="15 Janvier 2025 à 03:00" readonly style="background:var(--gray-50);color:var(--gray-500)">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="field">
+                    <label>Utilisateurs actifs</label>
+                    <input type="text" id="sysUsers" value="6 / 8 comptes actifs" readonly style="background:var(--gray-50);color:var(--gray-500)">
+                </div>
+                <div class="field">
+                    <label>Statut de la plateforme</label>
+                    <input type="text" id="sysStatus" value="🟢 Opérationnelle" readonly style="background:var(--gray-50);color:var(--gray-500);font-weight:600;color:#15803d;">
+                </div>
+            </div>
+            <div class="settings-actions">
+                <button class="btn btn-secondary" onclick="manualBackup()"><i class="fas fa-database"></i> Sauvegarde manuelle</button>
+                <button class="btn btn-secondary" onclick="clearCache()"><i class="fas fa-broom"></i> Vider le cache</button>
+                <button class="btn btn-primary" onclick="refreshSystem()"><i class="fas fa-rotate"></i> Actualiser</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-logo"><i class="fas fa-landmark"></i> ARCHI-COUD</div>
+       
+        <span>© 2025 Tous droits réservés</span>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/parametres.js"></script>
+</body>
+</html>

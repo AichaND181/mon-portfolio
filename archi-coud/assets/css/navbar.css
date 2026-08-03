@@ -1,0 +1,502 @@
+/* ============================================
+   NAVBAR — remplace le sidebar
+   ============================================ */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: var(--navbar-height);
+    background: linear-gradient(90deg, var(--blue-900) 0%, var(--blue-800) 55%, var(--blue-700) 100%);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 24px;
+}
+
+/* ---- Marque ---- */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.navbar-brand .logo-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--white);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.navbar-brand .logo-icon i {
+    font-size: 18px;
+    color: var(--blue-700);
+}
+
+.navbar-brand .brand-text h1 {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    line-height: 1.1;
+}
+
+.navbar-brand .brand-text span {
+    font-size: 9px;
+    font-weight: 400;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ---- Liens ---- */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+    overflow-x: auto;
+    scrollbar-width: none;
+    justify-content: center;
+}
+
+.navbar-links::-webkit-scrollbar {
+    display: none;
+}
+
+.navbar-links a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--transition);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.navbar-links a i {
+    font-size: 14px;
+    width: 15px;
+    text-align: center;
+}
+
+.navbar-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+}
+
+.navbar-links a.active {
+    background: rgba(255, 255, 255, 0.16);
+    color: var(--white);
+    font-weight: 600;
+}
+
+/* ---- Zone utilisateur ---- */
+.navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.navbar-user .avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--blue-400);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.navbar-user .avatar:hover {
+    background: var(--blue-300);
+}
+
+/* ---- Menu déroulant utilisateur ---- */
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    min-width: 180px;
+    padding: 8px 0;
+    display: none;
+    flex-direction: column;
+    z-index: 1001;
+}
+
+.user-dropdown.show {
+    display: flex;
+}
+
+.user-dropdown a,
+.user-dropdown button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    color: var(--gray-700);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+}
+
+.user-dropdown a:hover,
+.user-dropdown button:hover {
+    background: var(--gray-100);
+    color: var(--gray-900);
+}
+
+.user-dropdown a i,
+.user-dropdown button i {
+    font-size: 14px;
+    width: 16px;
+    text-align: center;
+}
+
+.user-dropdown .dropdown-divider {
+    height: 1px;
+    background: var(--gray-200);
+    margin: 6px 0;
+}
+
+.user-dropdown .dropdown-logout {
+    color: var(--red-500);
+}
+
+.user-dropdown .dropdown-logout:hover {
+    background: var(--red-100);
+    color: var(--red-500);
+}
+
+.navbar-logout {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 38px;
+    padding: 0 14px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.navbar-logout i {
+    font-size: 14px;
+}
+
+.navbar-logout:hover {
+    background: rgba(239, 68, 68, 0.25);
+    color: #fca5a5;
+}
+
+/* ---- Bouton menu mobile ---- */
+.navbar-toggle {
+    display: none;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+@media (max-width: 1100px) {
+    .navbar-links a span.logout-label {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar-toggle {
+        display: flex;
+    }
+
+    .navbar-links {
+        position: fixed;
+        top: var(--navbar-height);
+        left: 0;
+        right: 0;
+        background: var(--blue-800);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+        gap: 2px;
+        max-height: calc(100vh - var(--navbar-height));
+        overflow-y: auto;
+        transform: translateY(-150%);
+        opacity: 0;
+        transition: var(--transition);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar-links.open {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .navbar-links a {
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+
+    .navbar-user .avatar {
+        display: none;
+    }
+
+      .navbar-user .navbar-logout {
+        display: none;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0 14px;
+        gap: 12px;
+    }
+
+    .navbar-brand .brand-text {
+        display: none;
+    }
+}
+
+.navbar-links a.logout-link:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+}
+
+/* ============================================
+   MODAL DÉCONNEXION (déclenchée depuis la navbar)
+   ============================================ */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-overlay.visible {
+    display: flex;
+}
+
+.modal-container {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: navModalIn 0.25s ease forwards;
+    overflow: hidden;
+}
+
+@keyframes navModalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.modal-header h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--gray-900);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-close {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+    background: var(--gray-100);
+    color: var(--gray-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    background: var(--gray-200);
+    color: var(--gray-700);
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.logout-icon-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--red-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.logout-icon-circle i {
+    font-size: 26px;
+    color: var(--red-500);
+}
+
+.logout-text {
+    text-align: center;
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.7;
+}
+
+.logout-text strong {
+    color: var(--gray-800);
+}
+
+.logout-user-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 8px 16px;
+    background: var(--gray-100);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+.logout-user-badge .lub-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--blue-500);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.modal-footer {
+    padding: 0 24px 24px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-danger {
+    background: var(--red-500);
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+    transform: translateY(-1px);
+}
+
+/* ============================================
+   TOAST (partagé — utilisé par showToast() dans main.js)
+   ============================================ */
+.toast-notification {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: var(--gray-800);
+    color: var(--white);
+    padding: 14px 24px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 9999;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    animation: navToastIn 0.35s ease forwards;
+}
+
+.toast-notification.toast-out {
+    animation: navToastOut 0.3s ease forwards;
+}
+
+.toast-notification i {
+    font-size: 16px;
+}
+
+.toast-notification .toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    animation: navToastProg 3s linear forwards;
+}
+
+@keyframes navToastIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes navToastOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(20px); }
+}
+
+@keyframes navToastProg {
+    from { width: 100%; }
+    to { width: 0%; }
+}

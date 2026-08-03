@@ -1,0 +1,177 @@
+/* ============================================
+   FORMULAIRE UTILISATEUR (ajout / modification)
+   ============================================ */
+
+.form-page-content {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.form-page-content .card {
+    margin-bottom: 24px;
+}
+
+.form-page-content .sc-header {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.form-page-content .sc-header h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray-800);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-page-content .sc-header h3 i {
+    color: var(--blue-500);
+}
+
+.form-page-content .sc-header p {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: 2px;
+}
+
+.form-page-content .sc-body {
+    padding: 24px;
+}
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.form-field:last-child {
+    margin-bottom: 0;
+}
+
+.form-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+.form-field label .req {
+    color: var(--red-500);
+}
+
+.form-field input,
+.form-field select {
+    height: 44px;
+    padding: 0 14px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--gray-800);
+    background: var(--white);
+    outline: none;
+    transition: var(--transition);
+    width: 100%;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+    border-color: var(--blue-400);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-field input.input-error,
+.form-field select.input-error {
+    border-color: var(--red-500);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-field .field-error {
+    font-size: 11px;
+    color: var(--red-500);
+    font-weight: 500;
+    display: none;
+}
+
+.form-field .field-error.visible {
+    display: block;
+}
+
+.form-field .field-hint {
+    font-size: 11px;
+    color: var(--gray-400);
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding-top: 8px;
+}
+
+/* Avatar choices */
+.avatar-choices {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.avatar-choice {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    border: 3px solid transparent;
+    transition: var(--transition);
+}
+
+.avatar-choice:hover {
+    transform: scale(1.1);
+}
+
+.avatar-choice.selected {
+    border-color: var(--gray-800);
+    box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--gray-800);
+}
+
+/* Message de succès */
+.form-success-msg {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    background: var(--green-100);
+    color: #15803d;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.form-success-msg.visible {
+    display: flex;
+}
+
+.form-success-msg i {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+    .form-grid-2 { grid-template-columns: 1fr; }
+}

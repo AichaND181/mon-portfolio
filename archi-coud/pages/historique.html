@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique — ARCHI-COUD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/historique.css">
+</head>
+<body>
+
+    <div class="export-overlay" id="exportOverlay">
+        <div class="export-box">
+            <div class="export-spinner"></div>
+            <h4>Génération du PDF en cours...</h4>
+            <p>Cela peut prendre quelques secondes</p>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-brand">
+            <div class="logo-icon"><img src="../assets/images/logo-coud.png" alt="Logo COUD" class="logo-coud-img"></div>
+            <div class="brand-text"><h1>ARCHI-COUD</h1></div>
+        </div>
+
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Ouvrir le menu"><i class="fas fa-bars"></i></button>
+
+        <div class="navbar-links" id="navbarLinks">
+            <a href="../dashboard.html"><i class="fas fa-th-large"></i> Tableau de bord</a>
+            <a href="documents.html"><i class="fas fa-folder-open"></i> Documents</a>
+            <a href="collecte.html"><i class="fas fa-plus"></i> Collecte</a>
+            <a href="recherche.html"><i class="fas fa-search"></i> Recherche</a>
+            <a href="statistiques.html"><i class="fas fa-chart-bar"></i> Statistiques</a>
+            <a href="utilisateurs.html"><i class="fas fa-users"></i> Utilisateurs</a>
+            <a href="parametres.html"><i class="fas fa-gear"></i> Paramètres</a>
+        </div>
+
+        <div class="navbar-user">
+            <div class="avatar">AD</div>
+            <div class="user-dropdown">
+                <a href="parametres.html"><i class="fas fa-gear"></i> Paramètres</a>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-logout" onclick="openLogoutModal()"><i class="fas fa-right-from-bracket"></i> Déconnexion</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal-overlay" id="logoutModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3><i class="fas fa-right-from-bracket" style="color:var(--red-500)"></i> Déconnexion</h3>
+                <button class="modal-close" onclick="closeLogoutModal()"><i class="fas fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" style="text-align:center">
+                <div class="logout-icon-circle"><i class="fas fa-right-from-bracket"></i></div>
+                <p class="logout-text">
+                    Êtes-vous sûr de vouloir vous <strong>déconnecter</strong> ?<br>
+                    Vous devrez saisir vos identifiants pour accéder à nouveau à la plateforme.
+                </p>
+                <div class="logout-user-badge" style="display:inline-flex">
+                   <span class="lub-avatar">AD</span>
+<span id="logoutUserName">Admin</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeLogoutModal()"><i class="fas fa-xmark"></i> Annuler</button>
+                <button class="btn btn-danger" onclick="confirmLogout()"><i class="fas fa-right-from-bracket"></i> Se déconnecter</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <header class="header">
+            <div class="header-left">
+                <div class="breadcrumb">
+                    <a href="../dashboard.html"><i class="fas fa-home"></i></a>
+                    <i class="fas fa-chevron-right" style="font-size:10px"></i>
+                    <span class="current">Historique</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="header-btn" title="Notifications"><i class="fas fa-bell"></i></button>
+            </div>
+        </header>
+
+        <div class="page-content">
+            <div class="page-title-row animate-in">
+                <div>
+                    <h2>Historique des activités</h2>
+                    <p>Journal de toutes les opérations effectuées sur la plateforme</p>
+                </div>
+                <div class="page-title-actions">
+                    <button class="btn btn-secondary" onclick="printHistory()"><i class="fas fa-print"></i> Imprimer</button>
+                    <button class="btn btn-primary" onclick="exportHistory()"><i class="fas fa-file-pdf"></i> Exporter le journal</button>
+                </div>
+            </div>
+
+            <div class="card animate-in delay-1">
+                <div class="card-body" style="padding-bottom:0">
+                    <div class="history-toolbar">
+                        <select class="h-select" id="historyType">
+                            <option value="">Tous les types</option>
+                            <option value="ajout">Ajout</option>
+                            <option value="modification">Modification</option>
+                            <option value="suppression">Suppression</option>
+                            <option value="connexion">Connexion</option>
+                            <option value="numérisation">Numérisation</option>
+                        </select>
+                        <select class="h-select" id="historyUser">
+                            <option value="">Tous les utilisateurs</option>
+                            <option value="Coumba D. NIANG">Coumba D. NIANG</option>
+                            <option value="Abdoulaye DIALLO">Abdoulaye DIALLO</option>
+                            <option value="Fatou SOW">Fatou SOW</option>
+                            <option value="Ndeye Khady FALL">Ndeye Khady FALL</option>
+                            <option value="Ibrahima LY">Ibrahima LY</option>
+                        </select>
+                        <div class="h-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="historySearch" placeholder="Rechercher dans l'historique...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body" style="padding-top:4px">
+                    <div class="history-count" id="historyCount"></div>
+
+                    <div class="history-empty" id="historyEmpty">
+                        <i class="fas fa-magnifying-glass"></i>
+                        <p>Aucune activité trouvée pour ces critères.</p>
+                    </div>
+
+                    <div class="timeline" id="timeline">
+
+                        <div class="timeline-date">15 Janvier 2025</div>
+
+                        <div class="timeline-item">
+                            <div class="tl-dot login"></div>
+                            <div class="tl-header">
+                                <span class="tl-user">Coumba D. NIANG</span>
+                                <span class="tl-time">09:32</span>
+                            </div>
+                            <div class="tl-desc">Connexion à la plateforme</div>
+                            <span class="tl-tag connexion">Connexion</span>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="tl-dot add"></div>
+                            <div class="tl-header">
+                                <span class="tl-user">Coumba D. NIANG</span>
+                                <span class="tl-time">09:45</span>
+                            </div>
+                            <div class="tl-desc">Ajout du document <strong>PV_CA_2024_003.pdf</strong> dans le département Direction</div>
+                            <span class="tl-tag ajout">Ajout</span>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="tl-dot scan"></div>
+                            <div class="tl-header">
+                                <span class="tl-user">Fatou SOW</span>
+                                <span class="tl-time">11:20</span>
+                            </div>
+                            <div class="tl-desc">Numérisation de 15 documents du dossier <strong>Personnel 2024 — Capital Humain</strong></div>
+                            <span class="tl-tag numérisation">Numérisation</span>
+                        </div>
+
+                        <div class="timeline-date">14 Janvier 2025</div>
+
+                        <div class="timeline-item">
+                            <div class="tl-dot edit"></div>
+                            <div class="tl-header">
+                                <span class="tl-user">Abdoulaye DIALLO</span>
+                                <span class="tl-time">16:45</span>
+                            </div>
+                            <div class="tl-desc">Modification de la classification du document <strong>Etat_Paiement_Dec2024.xls</strong></div>
+                            <span class="tl-tag modification">Modification</span>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="tl-dot add"></div>
+                            <div class="tl-header">
+                                <span class="tl-user">Ndeye Khady FALL</span>
+                                <span class="tl-time">14:50</span>
+                            </div>
+                            <div class="tl-desc">Ajout du document <strong>PV_Ouverture_AO_2025.pdf</strong> — Passation des Marchés</div>
+                            <span class="tl-tag ajout">Ajout</span>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="tl-dot login"></div>
+                            <div class="tl-header">
+                                <span class="tl-user">Ibrahima LY</span>
+                                <span class="tl-time">07:55</span>
+                            </div>
+                            <div class="tl-desc">Connexion à la plateforme</div>
+                            <span class="tl-tag connexion">Connexion</span>
+                        </div>
+
+                        <div class="timeline-date">13 Janvier 2025</div>
+
+                        <div class="timeline-item">
+                            <div class="tl-dot delete"></div>
+                            <div class="tl-header">
+                                <span class="tl-user">Coumba D. NIANG</span>
+                                <span class="tl-time">10:15</span>
+                            </div>
+                            <div class="tl-desc">Suppression du doublon <strong>Note_Service_Sante_011.doc</strong> — Santé & Action Sociale</div>
+                            <span class="tl-tag suppression">Suppression</span>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="tl-dot scan"></div>
+                            <div class="tl-header">
+                                <span class="tl-user">Coumba D. NIANG</span>
+                                <span class="tl-time">08:30</span>
+                            </div>
+                            <div class="tl-desc">Numérisation de 8 documents — <strong>Conseil d'Administration — Direction</strong></div>
+                            <span class="tl-tag numérisation">Numérisation</span>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="tl-dot edit"></div>
+                            <div class="tl-header">
+                                <span class="tl-user">Fatou SOW</span>
+                                <span class="tl-time">08:10</span>
+                            </div>
+                            <div class="tl-desc">Mise à jour des droits d'accès du dossier <strong>Dossiers Médicaux Étudiants</strong></div>
+                            <span class="tl-tag modification">Modification</span>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="tl-dot login"></div>
+                            <div class="tl-header">
+                                <span class="tl-user">Abdoulaye DIALLO</span>
+                                <span class="tl-time">07:40</span>
+                            </div>
+                            <div class="tl-desc">Connexion à la plateforme</div>
+                            <span class="tl-tag connexion">Connexion</span>
+                        </div>
+
+                        <div class="timeline-date">10 Janvier 2025</div>
+
+                        <div class="timeline-item">
+                            <div class="tl-dot add"></div>
+                            <div class="tl-header">
+                                <span class="tl-user">Ndeye Khady FALL</span>
+                                <span class="tl-time">15:30</span>
+                            </div>
+                            <div class="tl-desc">Ajout du document <strong>Decision_Recrutement_2025.pdf</strong> — Capital Humain</div>
+                            <span class="tl-tag ajout">Ajout</span>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="tl-dot scan"></div>
+                            <div class="tl-header">
+                                <span class="tl-user">Fatou SOW</span>
+                                <span class="tl-time">10:00</span>
+                            </div>
+                            <div class="tl-desc">Numérisation de 22 documents — <strong>Bulletins de salaire Décembre 2024</strong></div>
+                            <span class="tl-tag numérisation">Numérisation</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-logo"><i class="fas fa-landmark"></i> ARCHI-COUD</div>
+       
+        <span>© 2025 Tous droits réservés</span>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/historique.js"></script>
+</body>
+</html>

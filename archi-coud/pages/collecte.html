@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARCHI-COUD — Collecte des documents</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  <link rel="stylesheet" href="../assets/css/formulaires.css" />
+</head>
+<body class="corps-dashboard">
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-brand">
+            <div class="logo-icon"><img src="../assets/images/logo-coud.png" alt="Logo COUD" class="logo-coud-img"></div>
+            <div class="brand-text"><h1>ARCHI-COUD</h1></div>
+        </div>
+
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Ouvrir le menu"><i class="fas fa-bars"></i></button>
+
+        <div class="navbar-links" id="navbarLinks">
+            <a href="../dashboard.html"><i class="fas fa-th-large"></i> Tableau de bord</a>
+            <a href="documents.html"><i class="fas fa-folder-open"></i> Documents</a>
+            <a href="collecte.html" class="actif"><i class="fas fa-plus"></i> Collecte</a>
+            <a href="recherche.html"><i class="fas fa-search"></i> Recherche</a>
+            <a href="statistiques.html"><i class="fas fa-chart-bar"></i> Statistiques</a>
+            <a href="utilisateurs.html"><i class="fas fa-users"></i> Utilisateurs</a>
+        </div>
+
+        <div class="navbar-user">
+            <div class="avatar">AD</div>
+            <div class="user-dropdown">
+                <a href="parametres.html"><i class="fas fa-gear"></i> Paramètres</a>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-logout" onclick="openLogoutModal()"><i class="fas fa-right-from-bracket"></i> Déconnexion</button>
+            </div>
+        </div>
+    </nav>
+
+  <div class="contenu-dashboard">
+
+    <div class="entete-page">
+      <h1>📦 Collecte des documents</h1>
+    </div>
+
+    <!-- Stepper : les 4 C -->
+    <div class="stepper-etapes">
+      <div class="etape-stepper active">
+        <span class="numero-etape">1</span>
+        <span class="libelle-etape">Collecte</span>
+      </div>
+      <div class="etape-stepper desactivee" id="etape-classement">
+        <span class="numero-etape">2</span>
+        <span class="libelle-etape">Classement</span>
+      </div>
+      <div class="etape-stepper desactivee" id="etape-conservation">
+        <span class="numero-etape">3</span>
+        <span class="libelle-etape">Conservation</span>
+      </div>
+      <div class="etape-stepper desactivee" id="etape-communication">
+        <span class="numero-etape">4</span>
+        <span class="libelle-etape">Communication</span>
+      </div>
+    </div>
+
+    <div class="bandeau-info">
+      📌 <strong>Règle des 4 C :</strong> Collecter → Classer → Conserver → Communiquer
+    </div>
+
+    <div class="panneau-formulaire">
+      <form id="formulaire-collecte" novalidate>
+        
+        <!-- Étape 1: Collecte -->
+        <div id="etape-1-collecte" class="contenu-etape">
+          <h2>📦 Étape 1 : Collecte du document</h2>
+          <div class="grille-formulaire">
+
+            <div class="champ-formulaire">
+              <label for="departement-collecte">Département producteur *</label>
+              <select id="departement-collecte" required>
+                <option value="" selected disabled>Sélectionner...</option>
+                <option value="Direction">Direction</option>
+                <option value="Budget">Budget</option>
+                <option value="Capital Humain">Capital Humain</option>
+                <option value="Santé & Action Sociale">Santé &amp; Action Sociale</option>
+                <option value="Services Techniques">Services Techniques</option>
+                <option value="Cités Universitaires">Cités Universitaires</option>
+                <option value="Moyens Généraux">Moyens Généraux</option>
+                <option value="Informatique">Informatique</option>
+                <option value="Environnement">Environnement</option>
+                <option value="Restauration Universitaire">Restauration Universitaire</option>
+                <option value="Activités Culturelles et Sportives">Activités Culturelles et Sportives</option>
+              </select>
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="type-collecte">Type de document *</label>
+              <select id="type-collecte" required>
+                <option value="" selected disabled>Sélectionner...</option>
+                <option value="PV">Procès-Verbal</option>
+                <option value="Rapport">Rapport</option>
+                <option value="Courrier">Courrier</option>
+                <option value="Budget">Budget</option>
+                <option value="Dossier Personnel">Dossier Personnel</option>
+                <option value="Marché">Marché</option>
+              </select>
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="date-reception-collecte">Date de réception *</label>
+              <input type="date" id="date-reception-collecte" required />
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="nombre-pages-collecte">Nombre de pages</label>
+              <input type="number" id="nombre-pages-collecte" placeholder="Ex: 12" min="0" />
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="etat-physique-collecte">État physique</label>
+              <select id="etat-physique-collecte">
+                <option value="bon_etat" selected>Bon état</option>
+                <option value="use">Usé</option>
+                <option value="endommage">Endommagé</option>
+                <option value="a_restaurer">À restaurer</option>
+              </select>
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="numero-inventaire-collecte">Numéro d'inventaire</label>
+              <input type="text" id="numero-inventaire-collecte" placeholder="Ex: INV-2026-001" />
+            </div>
+
+            <div class="champ-formulaire pleine-largeur">
+              <label for="observation-collecte">Observation / Remarques</label>
+              <textarea id="observation-collecte" placeholder="Informations complémentaires sur le document, son état, son contenu..."></textarea>
+            </div>
+
+          </div>
+
+          <div class="zone-actions-formulaire" style="justify-content: flex-end;">
+            <button type="button" id="bouton-suivant-1" class="bouton-enregistrer">→ Passer au classement</button>
+          </div>
+        </div>
+
+        <!-- Étape 2: Classement -->
+        <div id="etape-2-classement" class="contenu-etape" style="display: none;">
+          <h2>📁 Étape 2 : Classement du document</h2>
+          <div class="grille-formulaire">
+
+            <div class="champ-formulaire">
+              <label for="categorie-classement">Catégorie *</label>
+              <select id="categorie-classement" required>
+                <option value="" selected disabled>Sélectionner...</option>
+                <option value="Administratif">Administratif</option>
+                <option value="Financier">Financier</option>
+                <option value="Juridique">Juridique</option>
+                <option value="Technique">Technique</option>
+                <option value="Personnel">Personnel</option>
+              </select>
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="sous-categorie-classement">Sous-catégorie</label>
+              <input type="text" id="sous-categorie-classement" placeholder="Ex: Factures" />
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="code-classement">Code de classement *</label>
+              <input type="text" id="code-classement" placeholder="Ex: ARC-2026-001" required />
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="localisation-classement">Localisation physique</label>
+              <input type="text" id="localisation-classement" placeholder="Ex: Armoire A, Tiroir 3" />
+            </div>
+
+            <div class="champ-formulaire pleine-largeur">
+              <label for="mots-cles-classement">Mots-clés</label>
+              <input type="text" id="mots-cles-classement" placeholder="Séparez les mots-clés par des virgules" />
+            </div>
+
+          </div>
+
+          <div class="zone-actions-formulaire" style="justify-content: space-between;">
+            <button type="button" id="bouton-precedent-2" class="bouton-annuler">← Retour à la collecte</button>
+            <button type="button" id="bouton-suivant-2" class="bouton-enregistrer">→ Passer à la conservation</button>
+          </div>
+        </div>
+
+        <!-- Étape 3: Conservation -->
+        <div id="etape-3-conservation" class="contenu-etape" style="display: none;">
+          <h2>�️ Étape 3 : Conservation du document</h2>
+          <div class="grille-formulaire">
+
+            <div class="champ-formulaire">
+              <label for="duree-conservation">Durée de conservation *</label>
+              <select id="duree-conservation" required>
+                <option value="" selected disabled>Sélectionner...</option>
+                <option value="5">5 ans</option>
+                <option value="10">10 ans</option>
+                <option value="20">20 ans</option>
+                <option value="30">30 ans</option>
+                <option value="illimite">Illimitée</option>
+              </select>
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="date-destruction">Date de destruction prévue</label>
+              <input type="date" id="date-destruction" />
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="support-conservation">Support de conservation *</label>
+              <select id="support-conservation" required>
+                <option value="" selected disabled>Sélectionner...</option>
+                <option value="papier">Papier</option>
+                <option value="numerique">Numérique</option>
+                <option value="mixte">Mixte</option>
+              </select>
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="lieu-stockage">Lieu de stockage</label>
+              <input type="text" id="lieu-stockage" placeholder="Ex: Archives centrales" />
+            </div>
+
+            <div class="champ-formulaire pleine-largeur">
+              <label for="conditions-conservation">Conditions de conservation</label>
+              <textarea id="conditions-conservation" placeholder="Température, humidité, protection contre l'humidité..."></textarea>
+            </div>
+
+          </div>
+
+          <div class="zone-actions-formulaire" style="justify-content: space-between;">
+            <button type="button" id="bouton-precedent-3" class="bouton-annuler">← Retour au classement</button>
+            <button type="button" id="bouton-suivant-3" class="bouton-enregistrer">→ Passer à la communication</button>
+          </div>
+        </div>
+
+        <!-- Étape 4: Communication -->
+        <div id="etape-4-communication" class="contenu-etape" style="display: none;">
+          <h2>📤 Étape 4 : Communication du document</h2>
+          <div class="grille-formulaire">
+
+            <div class="champ-formulaire">
+              <label for="accessibilite">Niveau d'accessibilité *</label>
+              <select id="accessibilite" required>
+                <option value="" selected disabled>Sélectionner...</option>
+                <option value="public">Public</option>
+                <option value="interne">Interne</option>
+                <option value="confidentiel">Confidentiel</option>
+                <option value="secret">Secret</option>
+              </select>
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="autorises">Personnes autorisées</label>
+              <input type="text" id="autorises" placeholder="Liste des personnes/services autorisés" />
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="procedure-demande">Procédure de demande</label>
+              <textarea id="procedure-demande" placeholder="Étapes pour accéder au document..."></textarea>
+            </div>
+
+            <div class="champ-formulaire">
+              <label for="delai-reponse">Délai de réponse</label>
+              <input type="text" id="delai-reponse" placeholder="Ex: 48h" />
+            </div>
+
+          </div>
+
+          <div class="zone-actions-formulaire" style="justify-content: space-between;">
+            <button type="button" id="bouton-precedent-4" class="bouton-annuler">← Retour à la conservation</button>
+            <div style="display: flex; gap: 12px;">
+              <a href="dashboard.html" class="bouton-annuler">Annuler</a>
+              <button type="submit" class="bouton-enregistrer">💾 Enregistrer le document</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="message-formulaire" class="message-formulaire"></div>
+      </form>
+    </div>
+
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/navbar.js"></script>
+  <script src="../assets/js/collecte.js"></script>
+</body>
+</html>

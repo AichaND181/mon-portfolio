@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents — ARCHI-COUD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/documents.css">
+</head>
+
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-brand">
+            <div class="logo-icon"><img src="../assets/images/logo-coud.png" alt="Logo COUD" class="logo-coud-img"></div>
+            <div class="brand-text"><h1>ARCHI-COUD</h1></div>
+        </div>
+
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Ouvrir le menu"><i class="fas fa-bars"></i></button>
+
+        <div class="navbar-links" id="navbarLinks">
+            <a href="../dashboard.html"><i class="fas fa-th-large"></i> Tableau de bord</a>
+            <a href="documents.html"><i class="fas fa-folder-open"></i> Documents</a>
+            <a href="collecte.html"><i class="fas fa-plus"></i> Collecte</a>
+            <a href="recherche.html"><i class="fas fa-search"></i> Recherche</a>
+            <a href="statistiques.html"><i class="fas fa-chart-bar"></i> Statistiques</a>
+            <a href="utilisateurs.html"><i class="fas fa-users"></i> Utilisateurs</a>
+        </div>
+
+        <div class="navbar-user">
+            <div class="avatar">AD</div>
+            <div class="user-dropdown">
+                <a href="parametres.html"><i class="fas fa-gear"></i> Paramètres</a>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-logout" onclick="openLogoutModal()"><i class="fas fa-right-from-bracket"></i> Déconnexion</button>
+            </div>
+        </div>
+    </nav>
+
+  <div id="navbar-placeholder"></div>
+
+  <div class="contenu-dashboard">
+
+    <div class="entete-page">
+      <h1>📄 Gestion des documents</h1>
+      <div class="actions-entete">
+        <a href="collecte.html" class="bouton-secondaire">➕ Ajouter un document</a>
+      </div>
+    </div>
+
+    <!-- Statistiques rapides (même format que le tableau de bord) -->
+    <div class="grille-stats">
+      <div class="carte-stat">
+        <div class="valeur-stat" id="stat-total">0</div>
+        <div class="libelle-stat">Total documents</div>
+      </div>
+      <div class="carte-stat accent-clair">
+        <div class="valeur-stat" id="stat-numerises">0</div>
+        <div class="libelle-stat">Numérisés</div>
+      </div>
+      <div class="carte-stat accent-fonce">
+        <div class="valeur-stat" id="stat-en-cours">0</div>
+        <div class="libelle-stat">En cours</div>
+      </div>
+      <div class="carte-stat">
+        <div class="valeur-stat" id="stat-a-traiter">0</div>
+        <div class="libelle-stat">À traiter</div>
+      </div>
+    </div>
+
+    <!-- Barre de filtres -->
+    <div class="barre-filtres">
+      <input type="text" id="recherche-documents" placeholder="Rechercher par titre ou code..." />
+
+      <select id="filtre-type">
+        <option value="">Tous les types</option>
+        <option value="PV">PV</option>
+        <option value="Rapport">Rapport</option>
+        <option value="Budget">Budget</option>
+        <option value="Courrier">Courrier</option>
+      </select>
+
+      <select id="filtre-departement">
+        <option value="">Tous les départements</option>
+        <option value="Direction">Direction</option>
+        <option value="Budget">Budget</option>
+        <option value="Capital Humain">Capital Humain</option>
+      </select>
+
+      <select id="filtre-statut">
+        <option value="">Tous les statuts</option>
+        <option value="numerise">Numérisé</option>
+        <option value="en_cours">En cours</option>
+        <option value="a_traiter">À traiter</option>
+      </select>
+
+      <button type="button" id="bouton-filtrer" class="bouton-filtrer">🔍 Filtrer</button>
+      <button type="button" id="bouton-reinitialiser" class="bouton-reinitialiser">↺ Réinitialiser</button>
+    </div>
+
+    <div id="message-suppression-liste" class="message-suppression" style="display: none;"></div>
+
+    <!-- Tableau des documents -->
+    <div class="panneau-tableau">
+      <table class="tableau-documents">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Titre</th>
+            <th>Département</th>
+            <th>Type</th>
+            <th>Statut</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="corps-tableau-documents">
+          <!-- Rempli automatiquement par assets/js/documents.js -->
+        </tbody>
+      </table>
+      <p id="message-aucun-resultat" class="message-aucun-resultat" style="display: none;">
+        Aucun document ne correspond à ces filtres.
+      </p>
+    </div>
+
+  </div>
+
+   <div class="modal-overlay" id="modal-suppression-document">
+     <div class="modal-confirmation" role="dialog" aria-modal="true" aria-labelledby="titre-modal-suppression">
+     <div class="entete-suppression">
+      <span class="icone-alerte">⚠️</span>
+      <h3 id="titre-modal-suppression">Confirmation de suppression</h3>
+     </div>
+     <div class="alerte-suppression">
+      <span class="puce-alerte">🔴</span>
+      <span><strong>Attention :</strong> cette action est irréversible et toutes les données associées seront perdues.</span>
+     </div>
+      <div class="tableau-infos-suppression" id="infos-suppression-modal"></div>
+     <div id="message-suppression-modal" class="message-formulaire"></div>
+     <div class="modal-actions">
+      <button type="button" class="btn-annuler" id="annuler-suppression-modal">Annuler</button>
+      <button type="button" class="btn-confirmer" id="confirmer-suppression-modal">🗑️ Supprimer</button>
+     </div>
+     </div>
+   </div>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/documents.js"></script>
+</body>
+</html>

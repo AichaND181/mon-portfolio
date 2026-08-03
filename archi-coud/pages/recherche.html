@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche — ARCHI-COUD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/recherche.css">
+</head>
+
+<body>
+
+    <!-- ============================================================
+    NAVBAR
+    ============================================================ -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-brand">
+            <div class="logo-icon"><img src="../assets/images/logo-coud.png" alt="Logo COUD" class="logo-coud-img"></div>
+            <div class="brand-text"><h1>ARCHI-COUD</h1></div>
+        </div>
+
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Ouvrir le menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="navbar-links" id="navbarLinks">
+            <a href="../dashboard.html"><i class="fas fa-th-large"></i> Tableau de bord</a>
+            <a href="documents.html"><i class="fas fa-folder-open"></i> Documents</a>
+            <a href="collecte.html"><i class="fas fa-plus"></i> Collecte</a>
+            <a href="recherche.html" class="actif"><i class="fas fa-search"></i> Recherche</a>
+            <a href="statistiques.html"><i class="fas fa-chart-bar"></i> Statistiques</a>
+            <a href="utilisateurs.html"><i class="fas fa-users"></i> Utilisateurs</a>
+        </div>
+
+        <div class="navbar-user">
+            <div class="avatar">AD</div>
+            <div class="user-dropdown">
+                <a href="parametres.html"><i class="fas fa-gear"></i> Paramètres</a>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-logout" onclick="openLogoutModal()"><i class="fas fa-right-from-bracket"></i> Déconnexion</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+    CONTENU PRINCIPAL
+    ============================================================ -->
+    <div class="contenu-dashboard">
+
+        <!-- EN-TÊTE -->
+        <div class="entete-page">
+            <h1>🔍 Recherche avancée</h1>
+        </div>
+
+        <!-- BARRE DE FILTRES -->
+        <div class="barre-filtres">
+            <div class="grille-formulaire">
+
+                <div class="champ-formulaire">
+                    <label for="recherche-mots-cles">Mots-clés</label>
+                    <input type="text" id="recherche-mots-cles" placeholder="Titre, description..." />
+                </div>
+
+                <div class="champ-formulaire">
+                    <label for="recherche-type">Type</label>
+                    <select id="recherche-type">
+                        <option value="">Tous les types</option>
+                        <option value="PV">Procès-Verbal</option>
+                        <option value="Rapport">Rapport</option>
+                        <option value="Courrier">Courrier</option>
+                        <option value="Budget">Budget</option>
+                        <option value="Dossier Personnel">Dossier Personnel</option>
+                        <option value="Marché">Marché</option>
+                    </select>
+                </div>
+
+                <div class="champ-formulaire">
+                    <label for="recherche-departement">Département</label>
+                    <select id="recherche-departement">
+                        <option value="">Tous les départements</option>
+                        <option value="Direction">Direction</option>
+                        <option value="Budget">Budget</option>
+                        <option value="Capital Humain">Capital Humain</option>
+                        <option value="Santé & Action Sociale">Santé &amp; Action Sociale</option>
+                        <option value="Services Techniques">Services Techniques</option>
+                        <option value="Cités Universitaires">Cités Universitaires</option>
+                        <option value="Moyens Généraux">Moyens Généraux</option>
+                        <option value="Informatique">Informatique</option>
+                        <option value="Environnement">Environnement</option>
+                        <option value="Restauration Universitaire">Restauration Universitaire</option>
+                        <option value="Activités Culturelles et Sportives">Activités Culturelles et Sportives</option>
+                    </select>
+                </div>
+
+                <div class="champ-formulaire">
+                    <label for="recherche-date-debut">Date début</label>
+                    <input type="date" id="recherche-date-debut" />
+                </div>
+
+                <div class="champ-formulaire">
+                    <label for="recherche-date-fin">Date fin</label>
+                    <input type="date" id="recherche-date-fin" />
+                </div>
+
+                <div class="champ-formulaire">
+                    <label for="recherche-statut">Statut</label>
+                    <select id="recherche-statut">
+                        <option value="">Tous les statuts</option>
+                        <option value="numerise">Numérisé</option>
+                        <option value="en_cours">En cours</option>
+                        <option value="a_traiter">À traiter</option>
+                    </select>
+                </div>
+
+                <div class="champ-formulaire pleine-largeur">
+                    <label for="recherche-code">Code document</label>
+                    <input type="text" id="recherche-code" placeholder="Ex: ARC-2026-001" />
+                </div>
+
+            </div>
+
+            <div class="zone-actions-formulaire">
+                <button type="button" id="bouton-reinitialiser-recherche" class="bouton-reinitialiser">
+                    ↺ Réinitialiser
+                </button>
+                <button type="button" id="bouton-rechercher" class="bouton-filtrer">
+                    🔍 Rechercher
+                </button>
+            </div>
+        </div>
+
+        <!-- PANNEAU RÉSULTATS -->
+        <div class="panneau">
+            <h2 id="titre-resultats">📋 Résultats de la recherche</h2>
+
+            <div class="entete-liste-documents">
+                <span>Code</span>
+                <span>Titre</span>
+                <span>Département</span>
+                <span>Statut</span>
+            </div>
+
+            <ul class="liste-documents" id="liste-resultats-recherche"></ul>
+
+            <p id="message-aucun-resultat-recherche" class="message-aucun-resultat" style="display: none;">
+                Aucun document ne correspond à ces critères.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- ============================================================
+    MODALE DÉCONNEXION
+    ============================================================ -->
+    <div class="modal-overlay" id="modal-deconnexion">
+        <div class="modal-confirmation">
+            <h3>Déconnexion</h3>
+            <p>Voulez-vous vraiment vous déconnecter ?</p>
+            <div class="modal-actions">
+                <button class="btn-annuler" onclick="closeLogoutModal()">Annuler</button>
+                <button class="btn-confirmer" onclick="confirmLogout()">
+                    <i class="fas fa-right-from-bracket"></i> Déconnexion
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
+    <script>
+        // ================================================================
+        //  TOGGLE MENU MOBILE
+        // ================================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('navbarToggle');
+            const links = document.getElementById('navbarLinks');
+
+            if (toggle && links) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    links.classList.toggle('ouvert');
+                });
+
+                // Fermer le menu si on clique ailleurs
+                document.addEventListener('click', function(e) {
+                    if (!links.contains(e.target) && !toggle.contains(e.target)) {
+                        links.classList.remove('ouvert');
+                    }
+                });
+            }
+        });
+
+        // ================================================================
+        //  MODALE DÉCONNEXION
+        // ================================================================
+        function openLogoutModal() {
+            document.getElementById('modal-deconnexion').classList.add('ouvert');
+        }
+
+        function closeLogoutModal() {
+            document.getElementById('modal-deconnexion').classList.remove('ouvert');
+        }
+
+        function confirmLogout() {
+            window.location.href = '../index.html';
+        }
+
+        // Fermer la modale en cliquant sur l'overlay
+        document.getElementById('modal-deconnexion')?.addEventListener('click', function(e) {
+            if (e.target === this) closeLogoutModal();
+        });
+
+        // ================================================================
+        //  DONNÉES DE DÉMO
+        // ================================================================
+        const DOCUMENTS_DEMO = [
+            { code: "ARC-2026-001", titre: "PV Conseil d'Administration", departement: "Direction", type: "PV", statut: "numerise" },
+            { code: "ARC-2026-002", titre: "Budget 2026 - Prévisions", departement: "Budget", type: "Budget", statut: "en_cours" },
+            { code: "ARC-2026-003", titre: "Rapport d'activités 2025", departement: "Direction", type: "Rapport", statut: "numerise" },
+            { code: "ARC-2026-004", titre: "Dossier personnel - Mme NDIAYE", departement: "Capital Humain", type: "Courrier",
+                statut: "a_traiter" },
+            { code: "ARC-2026-005", titre: "Courrier réponse ministère", departement: "Direction", type: "Courrier",
+                statut: "numerise" },
+            { code: "ARC-2026-006", titre: "Rapport budgétaire trimestriel", departement: "Budget", type: "Rapport",
+                statut: "en_cours" },
+            { code: "ARC-2026-007", titre: "PV réunion Capital Humain", departement: "Capital Humain", type: "PV",
+                statut: "a_traiter" },
+            { code: "ARC-2026-008", titre: "Budget prévisionnel RH", departement: "Capital Humain", type: "Budget",
+                statut: "numerise" },
+            { code: "ARC-2026-009", titre: "Marché public - Fournitures", departement: "Moyens Généraux", type: "Marché",
+                statut: "en_cours" },
+            { code: "ARC-2026-010", titre: "Rapport d'étape - Cités", departement: "Cités Universitaires", type: "Rapport",
+                statut: "numerise" }
+        ];
+
+        const LIBELLES_STATUT = {
+            numerise: "✓ Numérisé",
+            en_cours: "⏳ En cours",
+            a_traiter: "⏳ À traiter"
+        };
+
+        // ================================================================
+        //  AFFICHAGE DES RÉSULTATS
+        // ================================================================
+        function afficherResultats(documents) {
+            const liste = document.getElementById('liste-resultats-recherche');
+            const message = document.getElementById('message-aucun-resultat-recherche');
+
+            if (!liste) return;
+
+            if (documents.length === 0) {
+                liste.innerHTML = '';
+                message.style.display = 'block';
+                return;
+            }
+
+            message.style.display = 'none';
+
+            liste.innerHTML = documents.map(doc => `
+                <li>
+                    <span class="code-doc">${doc.code}</span>
+                    <span class="titre-doc">${doc.titre}</span>
+                    <span class="departement-doc">${doc.departement}</span>
+                    <span class="statut-doc">
+                        <span class="badge-statut ${doc.statut}">${LIBELLES_STATUT[doc.statut] || doc.statut}</span>
+                    </span>
+                </li>
+            `).join('');
+        }
+
+        // ================================================================
+        //  FILTRAGE
+        // ================================================================
+        function effectuerRecherche() {
+            const motsCles = document.getElementById('recherche-mots-cles').value.trim().toLowerCase();
+            const type = document.getElementById('recherche-type').value;
+            const departement = document.getElementById('recherche-departement').value;
+            const dateDebut = document.getElementById('recherche-date-debut').value;
+            const dateFin = document.getElementById('recherche-date-fin').value;
+            const statut = document.getElementById('recherche-statut').value;
+            const code = document.getElementById('recherche-code').value.trim().toLowerCase();
+
+            // On filtre les documents de démo (les dates ne sont pas dans les données)
+            // On simule le filtre sur les champs existants
+            const resultats = DOCUMENTS_DEMO.filter(doc => {
+                // Mots-clés
+                let correspondMots = true;
+                if (motsCles !== '') {
+                    correspondMots = doc.titre.toLowerCase().includes(motsCles) ||
+                        doc.code.toLowerCase().includes(motsCles) ||
+                        doc.departement.toLowerCase().includes(motsCles);
+                }
+
+                const correspondType = type === '' || doc.type === type;
+                const correspondDepartement = departement === '' || doc.departement === departement;
+                const correspondStatut = statut === '' || doc.statut === statut;
+                const correspondCode = code === '' || doc.code.toLowerCase().includes(code);
+
+                return correspondMots && correspondType && correspondDepartement &&
+                    correspondStatut && correspondCode;
+            });
+
+            afficherResultats(resultats);
+        }
+
+        // ================================================================
+        //  RÉINITIALISATION
+        // ================================================================
+        function reinitialiserRecherche() {
+            document.getElementById('recherche-mots-cles').value = '';
+            document.getElementById('recherche-type').value = '';
+            document.getElementById('recherche-departement').value = '';
+            document.getElementById('recherche-date-debut').value = '';
+            document.getElementById('recherche-date-fin').value = '';
+            document.getElementById('recherche-statut').value = '';
+            document.getElementById('recherche-code').value = '';
+            afficherResultats(DOCUMENTS_DEMO);
+        }
+
+        // ================================================================
+        //  INITIALISATION
+        // ================================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Afficher tous les documents au chargement
+            afficherResultats(DOCUMENTS_DEMO);
+
+            // Écouteurs
+            document.getElementById('bouton-rechercher').addEventListener('click', effectuerRecherche);
+            document.getElementById('bouton-reinitialiser-recherche').addEventListener('click', reinitialiserRecherche);
+
+            // Recherche avec la touche Entrée
+            document.getElementById('recherche-mots-cles').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') effectuerRecherche();
+            });
+            document.getElementById('recherche-code').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') effectuerRecherche();
+            });
+        });
+    </script>
+
+</body>
+</html>

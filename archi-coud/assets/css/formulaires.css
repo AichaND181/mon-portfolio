@@ -1,0 +1,211 @@
+/* ================================================================
+   ARCHI-COUD — Formulaires Styles
+   ================================================================ */
+
+body {
+  background: var(--bleu-tres-clair);
+  min-height: 100vh;
+}
+
+/* --------- Stepper --------- */
+.stepper-etapes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--blanc);
+  border-radius: 14px;
+  box-shadow: var(--ombre-carte);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.etape-stepper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  position: relative;
+}
+
+.etape-stepper.active .numero-etape {
+  background: var(--bleu-principal);
+  color: var(--blanc);
+  border-color: var(--bleu-principal);
+}
+
+.etape-stepper.desactivee .numero-etape {
+  background: var(--gris-champ);
+  color: var(--gris-texte);
+  border-color: var(--gris-bordure);
+}
+
+.numero-etape {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--bleu-principal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.libelle-etape {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gris-texte);
+}
+
+.etape-stepper.active .libelle-etape {
+  color: var(--bleu-fonce);
+}
+
+/* --------- Bandeau info --------- */
+.bandeau-info {
+  background: #e3f6ea;
+  border: 1px solid #1e7d46;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #1e7d46;
+}
+
+/* --------- Panneau formulaire --------- */
+.panneau-formulaire {
+  background: var(--blanc);
+  border-radius: 14px;
+  box-shadow: var(--ombre-carte);
+  padding: 24px 28px;
+}
+
+/* --------- Contenu étape --------- */
+.contenu-etape h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--bleu-fonce);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--gris-bordure);
+}
+
+.grille-formulaire {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.champ-formulaire {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.champ-formulaire.pleine-largeur {
+  grid-column: 1 / -1;
+}
+
+.champ-formulaire label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gris-texte);
+}
+
+.champ-formulaire input,
+.champ-formulaire select,
+.champ-formulaire textarea {
+  padding: 10px 14px;
+  border: 1.5px solid var(--gris-bordure);
+  border-radius: 10px;
+  background: var(--gris-champ);
+  font-size: 14px;
+  color: #1a1a1a;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.champ-formulaire input:focus,
+.champ-formulaire select:focus,
+.champ-formulaire textarea:focus {
+  outline: none;
+  border-color: var(--bleu-principal);
+  background: var(--blanc);
+}
+
+.champ-formulaire textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* --------- Zone actions formulaire --------- */
+.zone-actions-formulaire {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gris-bordure);
+}
+
+.bouton-enregistrer {
+  background: var(--bleu-principal);
+  border: none;
+  color: var(--blanc);
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.bouton-enregistrer:hover {
+  background: var(--bleu-fonce);
+}
+
+.bouton-annuler {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gris-champ);
+  color: var(--gris-texte);
+  border: 1.5px solid var(--gris-bordure);
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.bouton-annuler:hover {
+  background: var(--gris-bordure);
+  color: #1a1a1a;
+}
+
+/* --------- Message formulaire --------- */
+.message-formulaire {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  display: none;
+}
+
+.message-formulaire.succes {
+  background: #e3f6ea;
+  color: #1e7d46;
+  display: block;
+}
+
+.message-formulaire.erreur {
+  background: #fdeaea;
+  color: #b3261e;
+  display: block;
+}

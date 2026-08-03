@@ -1,0 +1,85 @@
+/* ============================================
+   CATEGORIES — Styles
+   ============================================ */
+
+/* Cellule catégorie : pastille couleur + nom */
+.cat-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cat-cell .cat-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--white);
+    flex-shrink: 0;
+}
+
+.cat-cell .cat-cell-info h5 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.cat-cell .cat-cell-info span {
+    font-size: 11px;
+    color: var(--gray-400);
+}
+
+/* Code archivistique */
+.cat-code {
+    display: inline-flex;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: var(--gray-100);
+    color: var(--gray-600);
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.03em;
+}
+
+/* Nombre de documents */
+.cat-doc-count {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-800);
+}
+
+.cat-doc-count span {
+    font-weight: 400;
+    color: var(--gray-400);
+    margin-left: 4px;
+}
+
+/* Badge confidentialité */
+.confidentiality-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.confidentiality-badge.confidentiel {
+    background: var(--red-100);
+    color: var(--red-500);
+}
+
+.confidentiality-badge.standard {
+    background: var(--green-100);
+    color: #15803d;
+}
+
+@media (max-width: 768px) {
+    .users-toolbar { flex-direction: column; align-items: stretch; }
+    .users-toolbar .search-box { min-width: auto; }
+}

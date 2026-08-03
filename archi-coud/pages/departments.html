@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Départements — ARCHI-COUD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/departments.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-brand">
+            <div class="logo-icon"><img src="../assets/images/logo-coud.png" alt="Logo COUD" class="logo-coud-img"></div>
+            <div class="brand-text"><h1>ARCHI-COUD</h1></div>
+        </div>
+
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Ouvrir le menu"><i class="fas fa-bars"></i></button>
+
+        <div class="navbar-links" id="navbarLinks">
+            <a href="../dashboard.html"><i class="fas fa-th-large"></i> Tableau de bord</a>
+            <a href="documents.html"><i class="fas fa-folder-open"></i> Documents</a>
+            <a href="collecte.html"><i class="fas fa-plus"></i> Collecte</a>
+            <a href="recherche.html"><i class="fas fa-search"></i> Recherche</a>
+            <a href="statistiques.html"><i class="fas fa-chart-bar"></i> Statistiques</a>
+            <a href="utilisateurs.html"><i class="fas fa-users"></i> Utilisateurs</a>
+            <a href="parametres.html"><i class="fas fa-gear"></i> Paramètres</a>
+        </div>
+
+        <div class="navbar-user">
+            <div class="avatar">AD</div>
+            <div class="user-dropdown">
+                <a href="parametres.html"><i class="fas fa-gear"></i> Paramètres</a>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-logout" onclick="openLogoutModal()"><i class="fas fa-right-from-bracket"></i> Déconnexion</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal-overlay" id="logoutModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3><i class="fas fa-right-from-bracket" style="color:var(--red-500)"></i> Déconnexion</h3>
+                <button class="modal-close" onclick="closeLogoutModal()"><i class="fas fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" style="text-align:center">
+                <div class="logout-icon-circle"><i class="fas fa-right-from-bracket"></i></div>
+                <p class="logout-text">
+                    Êtes-vous sûr de vouloir vous <strong>déconnecter</strong> ?<br>
+                    Vous devrez saisir vos identifiants pour accéder à nouveau à la plateforme.
+                </p>
+                <div class="logout-user-badge" style="display:inline-flex">
+                   <span class="lub-avatar">AD</span>
+<span id="logoutUserName">Admin</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeLogoutModal()"><i class="fas fa-xmark"></i> Annuler</button>
+                <button class="btn btn-danger" onclick="confirmLogout()"><i class="fas fa-right-from-bracket"></i> Se déconnecter</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <header class="header">
+            <div class="header-left">
+                <div class="breadcrumb">
+                    <a href="../dashboard.html"><i class="fas fa-home"></i></a>
+                    <i class="fas fa-chevron-right" style="font-size:10px"></i>
+                    <span class="current">Départements</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="header-btn" title="Notifications"><i class="fas fa-bell"></i></button>
+            </div>
+        </header>
+
+        <div class="page-content">
+            <div class="page-title-row animate-in">
+                <div>
+                    <h2>Départements & Services</h2>
+                    <p>Les 22 entités productrices d'archives du COUD</p>
+                </div>
+            </div>
+
+            <div class="dept-filter-bar animate-in delay-1">
+                <select class="h-select" id="deptType">
+                    <option value="">Tous les types</option>
+                    <option value="departement">Départements</option>
+                    <option value="bureau">Bureau</option>
+                    <option value="cellule">Cellules</option>
+                    <option value="unite">Unité</option>
+                    <option value="agence">Agence</option>
+                </select>
+                <div class="h-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="deptSearch" placeholder="Rechercher un département...">
+                </div>
+            </div>
+
+            <div class="dept-count-display animate-in delay-1" id="deptCount"></div>
+
+            <div class="dept-grid animate-in delay-2" id="deptGrid">
+
+                <!-- 1. Direction -->
+                <div class="dept-card" data-type="departement">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-crown"></i></div>
+                        <div><h4>Direction</h4><span class="dc-type">Département</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Courriers</span><span>Décisions</span><span>OM</span><span>Notes de service</span><span>Attestations</span><span>Conseil d'Administration</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">1 245</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 2. Bureau Courrier -->
+                <div class="dept-card" data-type="bureau">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-envelope-open-text"></i></div>
+                        <div><h4>Bureau Courrier</h4><span class="dc-type">Bureau</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Courriers arrivée</span><span>Courriers départ</span><span>Registres</span><span>Attestations</span><span>Notes de service</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">890</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 3. Budget -->
+                <div class="dept-card" data-type="departement">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-coins"></i></div>
+                        <div><h4>Département du Budget</h4><span class="dc-type">Département</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Décisions</span><span>Rapports</span><span>Courriers</span><span>Attestations</span><span>Dossiers par compte</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">982</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 4. Passation des Marchés -->
+                <div class="dept-card" data-type="cellule">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-gavel"></i></div>
+                        <div><h4>Cellule de Passation des Marchés</h4><span class="dc-type">Cellule</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Dossiers AO</span><span>PV ouverture</span><span>PV évaluation</span><span>PV attribution</span><span>Rapports</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">534</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 5. Capital Humain -->
+                <div class="dept-card" data-type="departement">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-users"></i></div>
+                        <div><h4>Département du Capital Humain</h4><span class="dc-type">Département</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>États financiers</span><span>Retenues</span><span>Paiements</span><span>Bulletins</span><span>Dossiers Personnel</span><span>Évaluations</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">2 150</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 6. Santé -->
+                <div class="dept-card" data-type="departement">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-heart-pulse"></i></div>
+                        <div><h4>Département de la Santé et de l'Action Sociale</h4><span class="dc-type">Département</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Dossiers médicaux étudiants</span><span>Dossiers médicaux personnel</span><span>Dossiers comptables</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">1 870</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 7. Services Techniques -->
+                <div class="dept-card" data-type="departement">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-wrench"></i></div>
+                        <div><h4>Département des Services Techniques</h4><span class="dc-type">Département</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>PV dépouillement</span><span>PV réception</span><span>Factures</span><span>Lettres DRP</span><span>Bons de travaux</span><span>Plans</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">890</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 8. Cités Universitaires -->
+                <div class="dept-card" data-type="departement">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-building"></i></div>
+                        <div><h4>Département des Cités Universitaires</h4><span class="dc-type">Département</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Conventions</span><span>Fiches étudiants</span><span>Documents quotation</span><span>Documents administratifs</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">1 120</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 9. Moyens Généraux -->
+                <div class="dept-card" data-type="departement">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-boxes-stacked"></i></div>
+                        <div><h4>Département des Moyens Généraux</h4><span class="dc-type">Département</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Documents comptables</span><span>Livres</span><span>Carnets entrées/sorties</span><span>Fiches inventaires</span><span>Fiches de sorties</span><span>OM parc auto</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">756</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 10. Activités Culturelles et Sportives -->
+                <div class="dept-card" data-type="departement">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-masks-theater"></i></div>
+                        <div><h4>Département des Activités Culturelles et Sportives</h4><span class="dc-type">Département</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Documents de partenariats</span><span>Courriers</span><span>Notes</span><span>Rapports</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">320</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 11. Informatique -->
+                <div class="dept-card" data-type="departement">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-laptop-code"></i></div>
+                        <div><h4>Département Informatique</h4><span class="dc-type">Département</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Attestations de services faits</span><span>Courriers</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">145</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 12. Environnement -->
+                <div class="dept-card" data-type="departement">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-leaf"></i></div>
+                        <div><h4>Département de l'Environnement</h4><span class="dc-type">Département</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Courriers</span><span>Attestations de services faits</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">180</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 13. Restauration Universitaire -->
+                <div class="dept-card" data-type="departement">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-utensils"></i></div>
+                        <div><h4>Département de la Restauration Universitaire</h4><span class="dc-type">Département</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Factures</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">210</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 14. Unité de Sécurité -->
+                <div class="dept-card" data-type="unite">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-shield"></i></div>
+                        <div><h4>Unité de Sécurité</h4><span class="dc-type">Unité</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Notes de service</span><span>Courriers arrivée</span><span>Courriers départ</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">165</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 15. Agence Comptable Particulier -->
+                <div class="dept-card" data-type="agence">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-receipt"></i></div>
+                        <div><h4>Agence Comptable Particulier</h4><span class="dc-type">Agence</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Documents comptables</span><span>États de paiement</span><span>Factures</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">480</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 16. Cellule Audit Interne -->
+                <div class="dept-card" data-type="cellule">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+                        <div><h4>Cellule de l'Audit Interne</h4><span class="dc-type">Cellule</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Attestations de services faits</span><span>Courriers</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">120</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 17. Cellule Communication -->
+                <div class="dept-card" data-type="cellule">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-bullhorn"></i></div>
+                        <div><h4>Cellule Communication</h4><span class="dc-type">Cellule</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Attestations de services faits</span><span>Courriers</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">95</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 18. Cellule Coopération -->
+                <div class="dept-card" data-type="cellule">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-handshake"></i></div>
+                        <div><h4>Cellule de la Coopération</h4><span class="dc-type">Cellule</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Attestations de services faits</span><span>Courriers</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">88</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 19. Cellule Contrôle Interne -->
+                <div class="dept-card" data-type="cellule">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-clipboard-check"></i></div>
+                        <div><h4>Cellule Contrôle Interne</h4><span class="dc-type">Cellule</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Rapports</span><span>Attestations de services faits</span><span>Courriers</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">110</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 20. Cellule Contrôle de Gestion -->
+                <div class="dept-card" data-type="cellule">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-chart-pie"></i></div>
+                        <div><h4>Cellule Contrôle de Gestion</h4><span class="dc-type">Cellule</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Rapports</span><span>Attestations de services faits</span><span>Courriers</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">105</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 21. Cellule Juridique -->
+                <div class="dept-card" data-type="cellule">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-scale-balanced"></i></div>
+                        <div><h4>Cellule Juridique</h4><span class="dc-type">Cellule</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Dossiers contentieux</span><span>Rapports</span><span>Courriers</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">230</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+                <!-- 22. Cellule Suivi -->
+                <div class="dept-card" data-type="cellule">
+                    <div class="dc-header">
+                        <div class="dc-icon"><i class="fas fa-eye"></i></div>
+                        <div><h4>Cellule Suivi</h4><span class="dc-type">Cellule</span></div>
+                    </div>
+                    <div class="dc-docs">
+                        <span>Attestations de services faits</span><span>Courriers</span>
+                    </div>
+                    <div class="dc-footer">
+                        <div><span class="dc-count">73</span> <span class="dc-count-label">documents</span></div>
+                        <i class="fas fa-arrow-right dc-arrow"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-logo"><i class="fas fa-landmark"></i> ARCHI-COUD </div>
+        
+        <span>© 2025 Tous droits réservés</span>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/departments.js"></script>
+</body>
+</html>

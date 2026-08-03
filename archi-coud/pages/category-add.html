@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouvelle catégorie — ARCHI-COUD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/user-form.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-brand">
+            <div class="logo-icon"><img src="../assets/images/logo-coud.png" alt="Logo COUD" class="logo-coud-img"></div>
+            <div class="brand-text"><h1>ARCHI-COUD</h1></div>
+        </div>
+
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Ouvrir le menu"><i class="fas fa-bars"></i></button>
+
+        <div class="navbar-links" id="navbarLinks">
+            <a href="../dashboard.html"><i class="fas fa-th-large"></i> Tableau de bord</a>
+            <a href="documents.html"><i class="fas fa-folder-open"></i> Documents</a>
+            <a href="collecte.html"><i class="fas fa-plus"></i> Collecte</a>
+            <a href="recherche.html"><i class="fas fa-search"></i> Recherche</a>
+            <a href="statistiques.html"><i class="fas fa-chart-bar"></i> Statistiques</a>
+            <a href="utilisateurs.html"><i class="fas fa-users"></i> Utilisateurs</a>
+            <a href="parametres.html"><i class="fas fa-gear"></i> Paramètres</a>
+        </div>
+
+        <div class="navbar-user">
+            <div class="avatar">AD</div>
+            <div class="user-dropdown">
+                <a href="parametres.html"><i class="fas fa-gear"></i> Paramètres</a>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-logout" onclick="openLogoutModal()"><i class="fas fa-right-from-bracket"></i> Déconnexion</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal-overlay" id="logoutModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3><i class="fas fa-right-from-bracket" style="color:var(--red-500)"></i> Déconnexion</h3>
+                <button class="modal-close" onclick="closeLogoutModal()"><i class="fas fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" style="text-align:center">
+                <div class="logout-icon-circle"><i class="fas fa-right-from-bracket"></i></div>
+                <p class="logout-text">
+                    Êtes-vous sûr de vouloir vous <strong>déconnecter</strong> ?<br>
+                    Vous devrez saisir vos identifiants pour accéder à nouveau à la plateforme.
+                </p>
+                <div class="logout-user-badge" style="display:inline-flex">
+                   <span class="lub-avatar">AD</span>
+<span id="logoutUserName">Admin</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeLogoutModal()"><i class="fas fa-xmark"></i> Annuler</button>
+                <button class="btn btn-danger" onclick="confirmLogout()"><i class="fas fa-right-from-bracket"></i> Se déconnecter</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <header class="header">
+            <div class="header-left">
+                <div class="breadcrumb">
+                    <a href="categories.html"><i class="fas fa-tags"></i></a>
+                    <i class="fas fa-chevron-right" style="font-size:10px"></i>
+                    <span class="current">Nouvelle catégorie</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="page-content">
+            <div class="form-page-content animate-in">
+                <div class="card">
+                    <div class="sc-header">
+                        <h3><i class="fas fa-plus"></i> Nouvelle catégorie</h3>
+                        <p>Créez une catégorie et son code de classification archivistique</p>
+                    </div>
+                    <div class="sc-body">
+                        <div class="form-success-msg" id="addSuccessMsg">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Catégorie ajoutée avec succès ! Fermeture automatique...</span>
+                        </div>
+                        <div class="form-grid-2">
+                            <div class="form-field"><label>Nom de la catégorie <span class="req">*</span></label><input type="text" id="addNom" placeholder="Ex : Rapports"><span class="field-error"></span></div>
+                            <div class="form-field"><label>Code <span class="req">*</span></label><input type="text" id="addCode" placeholder="Ex : RAP" maxlength="6" style="text-transform:uppercase;"><span class="field-error"></span></div>
+                        </div>
+                        <div class="form-field"><label>Description</label><input type="text" id="addDescription" placeholder="Ex : Rapports d'activité et de gestion"><span class="field-error"></span></div>
+                        <div class="form-grid-2">
+                            <div class="form-field"><label>Icône</label>
+                                <select id="addIcon">
+                                    <option value="fa-folder">Dossier générique</option>
+                                    <option value="fa-envelope">Courrier</option>
+                                    <option value="fa-gavel">Décision</option>
+                                    <option value="fa-note-sticky">Note de service</option>
+                                    <option value="fa-file-lines">Rapport</option>
+                                    <option value="fa-file-signature">Procès-verbal</option>
+                                    <option value="fa-route">Ordre de mission</option>
+                                    <option value="fa-certificate">Attestation</option>
+                                    <option value="fa-stamp">Certificat</option>
+                                    <option value="fa-id-badge">Dossier du personnel</option>
+                                    <option value="fa-notes-medical">Dossier médical</option>
+                                    <option value="fa-money-check-dollar">Bulletin de salaire</option>
+                                    <option value="fa-chart-pie">État financier</option>
+                                    <option value="fa-file-invoice">Facture</option>
+                                    <option value="fa-handshake">Convention</option>
+                                    <option value="fa-calculator">Document comptable</option>
+                                    <option value="fa-scale-balanced">Dossier contentieux</option>
+                                </select>
+                            </div>
+                            <div class="form-field"><label>Confidentialité</label>
+                                <select id="addConfidentiel">
+                                    <option value="non" selected>Standard</option>
+                                    <option value="oui">Confidentielle (accès limité)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-field"><label>Couleur</label><div class="avatar-choices" id="addColorPicker"></div></div>
+                        <div class="form-actions">
+                            <a href="categories.html" class="btn btn-secondary"><i class="fas fa-xmark"></i> Annuler</a>
+                            <button class="btn btn-primary" onclick="saveNewCategory()"><i class="fas fa-check"></i> Enregistrer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/category-add.js"></script>
+</body>
+</html>

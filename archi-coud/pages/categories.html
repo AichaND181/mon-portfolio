@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catégories — ARCHI-COUD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/utilisateurs.css">
+    <link rel="stylesheet" href="../assets/css/categories.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-brand">
+            <div class="logo-icon"><img src="../assets/images/logo-coud.png" alt="Logo COUD" class="logo-coud-img"></div>
+            <div class="brand-text"><h1>ARCHI-COUD</h1></div>
+        </div>
+
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Ouvrir le menu"><i class="fas fa-bars"></i></button>
+
+        <div class="navbar-links" id="navbarLinks">
+            <a href="../dashboard.html"><i class="fas fa-th-large"></i> Tableau de bord</a>
+            <a href="documents.html"><i class="fas fa-folder-open"></i> Documents</a>
+            <a href="collecte.html"><i class="fas fa-plus"></i> Collecte</a>
+            <a href="recherche.html"><i class="fas fa-search"></i> Recherche</a>
+            <a href="statistiques.html"><i class="fas fa-chart-bar"></i> Statistiques</a>
+            <a href="utilisateurs.html"><i class="fas fa-users"></i> Utilisateurs</a>
+            <a href="parametres.html"><i class="fas fa-gear"></i> Paramètres</a>
+        </div>
+
+        <div class="navbar-user">
+            <div class="avatar">AD</div>
+            <div class="user-dropdown">
+                <a href="parametres.html"><i class="fas fa-gear"></i> Paramètres</a>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-logout" onclick="openLogoutModal()"><i class="fas fa-right-from-bracket"></i> Déconnexion</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal-overlay" id="logoutModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3><i class="fas fa-right-from-bracket" style="color:var(--red-500)"></i> Déconnexion</h3>
+                <button class="modal-close" onclick="closeLogoutModal()"><i class="fas fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" style="text-align:center">
+                <div class="logout-icon-circle"><i class="fas fa-right-from-bracket"></i></div>
+                <p class="logout-text">
+                    Êtes-vous sûr de vouloir vous <strong>déconnecter</strong> ?<br>
+                    Vous devrez saisir vos identifiants pour accéder à nouveau à la plateforme.
+                </p>
+                <div class="logout-user-badge" style="display:inline-flex">
+                   <span class="lub-avatar">AD</span>
+<span id="logoutUserName">Admin</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeLogoutModal()"><i class="fas fa-xmark"></i> Annuler</button>
+                <button class="btn btn-danger" onclick="confirmLogout()"><i class="fas fa-right-from-bracket"></i> Se déconnecter</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <header class="header">
+            <div class="header-left">
+                <div class="breadcrumb">
+                    <a href="../dashboard.html"><i class="fas fa-home"></i></a>
+                    <i class="fas fa-chevron-right" style="font-size:10px"></i>
+                    <span class="current">Catégories</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="header-btn" title="Notifications"><i class="fas fa-bell"></i></button>
+            </div>
+        </header>
+
+        <div class="page-content">
+            <div class="page-title-row animate-in">
+                <div>
+                    <h2>Catégories</h2>
+                    <p>Typologie et codification des documents pour la description archivistique</p>
+                </div>
+                <button class="btn btn-primary" onclick="openAddTab()"><i class="fas fa-plus"></i> Nouvelle catégorie</button>
+            </div>
+
+            <div class="card animate-in delay-1">
+                <div class="users-toolbar" style="padding:16px 24px 0;">
+                    <div class="toolbar-left">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="catSearch" placeholder="Rechercher une catégorie ou un code...">
+                        </div>
+                        <select class="filter-select" id="catConfidentialiteFilter">
+                            <option value="">Toutes les catégories</option>
+                            <option value="confidentiel">Confidentielles</option>
+                            <option value="standard">Standard</option>
+                        </select>
+                    </div>
+                    <span id="catCount" style="font-size:13px;color:var(--gray-400);">16 catégories</span>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Catégorie</th>
+                                <th>Code</th>
+                                <th>Documents</th>
+                                <th>Confidentialité</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="catTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="table-footer">
+                    <span id="catPaginationInfo">Affichage 1 - 16 sur 16 catégories</span>
+                    <div class="pagination">
+                        <button><i class="fas fa-chevron-left" style="font-size:11px"></i></button>
+                        <button class="active">1</button>
+                        <button><i class="fas fa-chevron-right" style="font-size:11px"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-logo"><i class="fas fa-landmark"></i> ARCHI-COUD</div>
+      
+        <span>© 2025 Tous droits réservés</span>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/categories.js"></script>
+</body>
+</html>

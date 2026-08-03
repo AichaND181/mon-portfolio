@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion — ARCHI-COUD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/connexion.css">
+</head>
+<body>
+
+    <div class="login-wrapper">
+
+        <!-- CÔTÉ GAUCHE — Visuel -->
+        <div class="login-visual">
+            <div class="decor-line"></div>
+            <div class="decor-line"></div>
+            <div class="decor-line"></div>
+
+            <div class="visual-content">
+                <div class="visual-logo">
+                    <img src="assets/images/logo-coud.png" alt="Logo COUD" class="logo-coud-img">
+                </div>
+                <h1>ARCHI-COUD</h1>
+                
+                <p class="visual-desc">
+                    Plateforme de numérisation et de gestion électronique
+                    des archives et de la documentation du Centre des
+                    Œuvres Universitaires de Dakar.
+                </p>
+                <div class="visual-stats">
+                    <div class="visual-stat">
+                        <span class="vs-num">500</span>
+                        <span class="vs-label">Mètres linéaires</span>
+                    </div>
+                    <div class="visual-stat">
+                        <span class="vs-num">18</span>
+                        <span class="vs-label">Départements</span>
+                    </div>
+                    <div class="visual-stat">
+                        <span class="vs-num">12k+</span>
+                        <span class="vs-label">Documents</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-institution">
+                <p>
+                    République du Sénégal — Un Peuple, Un But, Une Foi<br>
+                    Ministère de l'Enseignement Supérieur, de la Recherche et de l'Innovation<br>
+                    Centre des Œuvres Universitaires de Dakar
+                </p>
+            </div>
+        </div>
+
+        <!-- CÔTÉ DROIT — Formulaire -->
+        <div class="login-form-side">
+            <div class="login-form-container">
+
+                <div class="login-form-logo">
+                    <img src="assets/images/logo-coud.png" alt="Logo COUD" class="logo-coud-img">
+                </div>
+
+                <div class="form-welcome">
+                    <h2>Connexion</h2>
+                    <p>Accédez à votre espace de gestion des archives</p>
+                </div>
+
+                <form class="login-form" id="loginForm" autocomplete="off">
+
+                    <div class="form-error" id="formError">
+                        <i class="fas fa-circle-exclamation"></i>
+                        <span id="errorMsg"></span>
+                    </div>
+
+                    <div class="form-success" id="formSuccess">
+                        <i class="fas fa-circle-check"></i>
+                        <span>Connexion réussie ! Redirection en cours...</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username">Identifiant</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="username" name="username" placeholder="Saisissez votre identifiant" autofocus>
+                            <i class="fas fa-user input-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" name="password" placeholder="Saisissez votre mot de passe">
+                            <i class="fas fa-lock input-icon"></i>
+                            <button type="button" class="toggle-password" data-target="password" tabindex="-1">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label>
+                            <input type="checkbox" name="remember">
+                            Se souvenir de moi
+                        </label>
+                        <a href="#">Mot de passe oublié ?</a>
+                    </div>
+
+                    <button type="submit" class="btn-login" id="btnLogin">
+                        <span class="btn-text">Se connecter</span>
+                        <div class="spinner"></div>
+                    </button>
+
+                    <div class="form-separator">
+                        <span>Comptes de test</span>
+                    </div>
+
+                    <div class="login-hint">
+                        <strong><i class="fas fa-info-circle"></i> Identifiants de démonstration :</strong>
+                        <code>admin</code> / <code>admin</code> — Cheffe du BAD<br>
+                        <code>bad</code> / <code>bad</code> — Agent Archives<br>
+                        <code>budget</code> / <code>budget</code> — Dépt. Budget<br>
+                        <code>rh</code> / <code>rh</code> — Capital Humain<br>
+                        <code>direction</code> / <code>direction</code> — Administrateur
+                    </div>
+
+                </form>
+
+                <div class="form-footer">
+                    Bureau des Archives et de la Documentation — COUD
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="assets/js/connexion.js"></script>
+    <script>
+        // Empêcher le retour arrière depuis la page de connexion
+        window.addEventListener('pageshow', function(event) {
+            // Si la page est chargée depuis le cache (bouton retour), on la recharge
+            if (event.persisted) {
+                window.location.reload();
+            }
+        });
+
+        // Remplacer l'historique pour que la page de connexion devienne la page racine
+        if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
+</body>
+</html>
